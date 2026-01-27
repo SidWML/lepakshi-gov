@@ -21,10 +21,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: "HOME", href: "/" },
-    { label: "HERITAGE", href: "/heritage" },
-    { label: "CORPORATE PROFILE", href: "/corporate-profile" },
-    { label: "CLUSTER MAP", href: "/cluster-map" },
-    { label: "ARTISAN STORIES", href: "/artisan-stories" },
+    { label: "ABOUT US", href: "/aboutus", hasDropdown: true },
     { label: "PRODUCTS", href: "/products", hasDropdown: true },
     { label: "NEWS & EVENTS", href: "/news-events" },
     { label: "TENDERS", href: "/tenders" },
