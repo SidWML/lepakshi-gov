@@ -59,15 +59,6 @@ export default function AboutUsPage() {
       >
         {/* Page Title in center of hero */}
         <div className="text-center">
-          <div className="flex justify-center mb-4">
-            <Image
-              src="/Aboutus/food-image-rosemary-opt-93x65.jpg"
-              alt="Rosemary Decorative Element"
-              width={93}
-              height={65}
-              className="object-contain"
-            />
-          </div>
           <h1 className="text-white text-7xl font-semibold">{getActiveTabLabel()}</h1>
         </div>
         <div>
