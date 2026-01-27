@@ -26,16 +26,16 @@ export default function Navbar() {
       href: "/aboutus",
       hasDropdown: true,
       children: [
-        { label: "Our Heritage", href: "/our-heritage" },
+        { label: "Our Heritage", href: "/heritage" },
         { label: "Corporate Profile", href: "/corporate-profile" },
-        { label: "Blog", href: "/blog" },
+        { label: "Artisan Stories", href: "/artisan-stories" },
         { label: "Cluster Map", href: "/cluster-map" },
       ]
     },
     { label: "NEWS & EVENTS", href: "/news-events" },
     { label: "DOWNLOADS", href: "/downloads" },
     { label: "TENDERS", href: "/tenders" },
-    { label: "CONTACT US", href: "/contact" },
+    { label: "CONTACT US", href: "/aboutus" },
   ];
 
   const socialLinks: SocialLink[] = [
@@ -193,8 +193,8 @@ export default function Navbar() {
                   alt="Chief Minister"
                   width={130}
                   height={130}
-                  className={`transition-all duration-300 ${
-                    isScrolled ? "h-[50px]" : "h-[65px] "
+                  className={`transition-all duration-300 border rounded-full ${
+                    isScrolled ? "h-[50px]" : "h-[85px] "
                   } w-auto object-contain cursor-pointer`}
                   quality={100}
                 />
@@ -216,8 +216,8 @@ export default function Navbar() {
                   alt="Minister"
                   width={130}
                   height={130}
-                  className={`transition-all duration-300 ${
-                    isScrolled ? "h-[50px]" : "h-[65px]"
+                  className={`transition-all duration-300 border rounded-full ${
+                    isScrolled ? "h-[50px]" : "h-[85px]"
                   } w-auto object-contain cursor-pointer`}
                   quality={100}
                 />
