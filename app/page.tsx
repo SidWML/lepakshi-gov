@@ -1,8 +1,13 @@
-import HomePage from '@/app/components/Home/HomePage'
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import HomePage from "./components/Home/HomePage";
 
-export default function homePage() {
+export default function Page() {
   return (
-    <HomePage />
-  )
+    <>
+      <Navbar />
+      <HomePage />
+      <Footer />
+    </>
+  );
 }
-

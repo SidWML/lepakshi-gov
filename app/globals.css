@@ -1,26 +1,380 @@
+/* Indian Language Fonts - Must be first before tailwindcss import */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* Apply Telugu font when Telugu language is selected (class added dynamically via JS) */
+html.lang-te,
+html.lang-te body,
+html.lang-te *,
+html.lang-te font,
+html.lang-te font[style],
+body.lang-te,
+body.lang-te *,
+body.lang-te font,
+body.lang-te font[style],
+.lang-te font[style="vertical-align: inherit;"],
+.lang-te font[dir="auto"] {
+  font-family: 'Noto Sans Telugu', system-ui, sans-serif !important;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --footer-text-color: #242424;
+    --radius: 0.625rem;
+
+    /* Color Palette - Lepakshi Handicrafts */
+    --prussian-blue: #103248;
+    /* Deep navy blue - primary dark, sophisticated */
+    --avocado: #596c45;
+    /* Earthy green - nature, organic feel */
+    --xanthous: #e0ae31;
+    /* Golden yellow - accents, warmth */
+    --auburn: #a53430;
+    /* Rich red - call to action, energy */
+    --claret: #6c0c2c;
+    /* Deep maroon - luxurious, regal */
+    --eerie-black: #242424;
+    /* Dark text - readability */
+    --dutch-white: #f5e8c8;
+    /* Warm cream - light backgrounds */
+
+    --background: #f5e8c8;
+    --foreground: #242424;
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+
+    /* Royal Theme Colors - Premium Palette */
+    --royal-burgundy: #3d3428;
+    --royal-gold: #c9a227;
+    --royal-ivory: #f8f6f1;
+    --royal-slate: #666666;
+    --royal-navy: #1a1610;
+
+    /* Premium Color Palette */
+    /* Royal Gold Gradient */
+    --gold-light: #f7e8b5;
+    --gold-primary: #c9a227;
+    --gold-dark: #9a7b1a;
+    --gold-glow: rgba(201, 162, 39, 0.3);
+
+    /* Deep Luxury Backgrounds */
+    --luxury-dark: #0f0f0f;
+    --luxury-charcoal: #1a1a1a;
+    --luxury-slate: #2d2a26;
+
+    /* Cream & Ivory */
+    --ivory-light: #faf8f5;
+    --ivory-medium: #f5f1e8;
+    --ivory-warm: #f0ebe0;
+
+    /* Typography */
+    --text-primary: #242424;
+    --text-secondary: #596c45;
+    --text-tertiary: #9ca3af;
+    --text-disabled: #d1d5db;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.125rem;
+    /* 18px */
+    --text-xl: 1.25rem;
+    /* 20px */
+    --text-2xl: 1.5rem;
+    /* 24px */
+    --text-3xl: 1.875rem;
+    /* 30px */
+
+    /* Font Weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    /* Color Palette - properly exposed as Tailwind colors */
+    --color-prussian-blue: #103248;
+    --color-avocado: #596c45;
+    --color-xanthous: #e0ae31;
+    --color-auburn: #a53430;
+    --color-claret: #6c0c2c;
+    --color-eerie-black: #242424;
+    --color-dutch-white: #f5e8c8;
+
+    /* Royal Theme Colors - Premium Palette */
+    --color-royal-burgundy: #3d3428;
+    --color-royal-gold: #c9a227;
+    --color-royal-ivory: #f8f6f1;
+    --color-royal-slate: #666666;
+    --color-royal-navy: #1a1610;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-footer-text-color: var(--footer-text-color);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+    scroll-behavior: smooth;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Premium Button Styles */
+.btn {
+    @apply px-4 py-2 text-xs font-medium text-[#c9a227] border border-[#c9a227] hover:bg-[#c9a227] hover:text-white transition;
+}
+
+.btn-premium {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+    border: 1px solid var(--gold-light);
+    transition: all 0.4s ease;
+}
+
+.btn-premium::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-premium:hover::before {
+    left: 100%;
+}
+
+.btn-premium:hover {
+    box-shadow: 0 8px 32px rgba(201, 162, 39, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Premium Outline Button */
+.btn-premium-outline {
+    position: relative;
+    border: 2px solid var(--gold-primary);
+    background: transparent;
+    color: var(--gold-primary);
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.btn-premium-outline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.btn-premium-outline:hover::before {
+    width: 100%;
+}
+
+.btn-premium-outline:hover {
+    color: white;
+    border-color: var(--gold-dark);
+    box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
+}
+
+/* Premium Text Gradient */
+.text-gold-gradient {
+    background: linear-gradient(
+        135deg,
+        var(--gold-light) 0%,
+        var(--gold-primary) 50%,
+        var(--gold-dark) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Luxury Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ivory-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--gold-primary), var(--gold-dark));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-primary);
+}
+
+/* Premium Animations */
+@keyframes premium-marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes marquee-glow {
+    0%,
+    100% {
+        text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(201, 162, 39, 0.5);
+    }
+}
+
+@keyframes card-shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+@keyframes gold-border-glow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 20px rgba(201, 162, 39, 0.2),
+            inset 0 0 20px rgba(201, 162, 39, 0.05);
+    }
+    50% {
+        box-shadow:
+            0 0 40px rgba(201, 162, 39, 0.4),
+            inset 0 0 40px rgba(201, 162, 39, 0.1);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+/* Premium Skeleton Shimmer Animation */
+@keyframes skeleton-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.skeleton-shimmer {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        rgba(201, 169, 98, 0.08) 0%,
+        rgba(245, 241, 232, 0.4) 50%,
+        rgba(201, 169, 98, 0.08) 100%
+    );
+}
+
+.skeleton-shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(201, 169, 98, 0.15) 20%,
+        rgba(245, 241, 232, 0.3) 50%,
+        rgba(201, 169, 98, 0.15) 80%,
+        transparent 100%
+    );
+    animation: skeleton-shimmer 1.5s infinite ease-in-out;
 }
