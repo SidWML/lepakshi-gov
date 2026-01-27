@@ -21,9 +21,19 @@ export default function Navbar() {
 
   const navItems = [
     { label: "HOME", href: "/" },
-    { label: "ABOUT US", href: "/aboutus", hasDropdown: true },
-    { label: "PRODUCTS", href: "/products", hasDropdown: true },
+    {
+      label: "ABOUT US",
+      href: "/aboutus",
+      hasDropdown: true,
+      children: [
+        { label: "Our Heritage", href: "/our-heritage" },
+        { label: "Corporate Profile", href: "/corporate-profile" },
+        { label: "Blog", href: "/blog" },
+        { label: "Cluster Map", href: "/cluster-map" },
+      ]
+    },
     { label: "NEWS & EVENTS", href: "/news-events" },
+    { label: "DOWNLOADS", href: "/downloads" },
     { label: "TENDERS", href: "/tenders" },
     { label: "CONTACT US", href: "/contact" },
   ];
@@ -116,17 +126,21 @@ export default function Navbar() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
           isScrolled || isMobileMenuOpen
-            ? "bg-[#f8f6f1] shadow-xl"
-            : "bg-gradient-to-r from-[#3d3428] via-[#4a3f2f] to-[#3d3428]"
+            ? "bg-white shadow-2xl shadow-gray-300/50"
+            : "bg-transparent"
         }`}
         initial={{ y: 0 }}
         animate={{ y: isHeaderVisible || isMobileMenuOpen ? 0 : -200 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
+        {/* Top Gold Border Accent */}
+        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#c9a962] to-transparent transition-opacity duration-300 ${
+          isScrolled ? "opacity-100" : "opacity-0"
+        }`} />
         {/* TOP HEADER SECTION */}
         <div
           className={`transition-all duration-300 ${
-            isScrolled ? "py-2" : "py-3"
+            isScrolled ? "py-2" : "py-4"
           }`}
         >
           <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
@@ -137,35 +151,34 @@ export default function Navbar() {
                 <Image
                   src="/AP-emblem-logo.png"
                   alt="AP Government Emblem"
-                  width={isScrolled ? 60 : 75}
-                  height={isScrolled ? 60 : 75}
+                  width={150}
+                  height={150}
                   className={`transition-all duration-300 ${
                     isScrolled ? "h-[60px]" : "h-[75px]"
                   } w-auto object-contain cursor-pointer`}
+                  quality={100}
                   priority
                 />
-                <div
-                  className={`leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] ${
-                    isScrolled ? "text-[#3d3428]" : "text-white"
-                  }`}
-                >
+                <div className={`leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] ${
+                  isScrolled ? "text-[#2c2c2c]" : "text-white"
+                }`}>
                   <div
-                    className={`font-semibold leading-snug transition-all duration-300 ${
-                      isScrolled ? "text-[13px]" : "text-[14px]"
+                    className={`font-bold leading-snug transition-all duration-300 ${
+                      isScrolled ? "text-[15px]" : "text-[16px]"
                     }`}
                   >
                     Andhra Pradesh Handicrafts
                   </div>
                   <div
-                    className={`font-semibold leading-snug transition-all duration-300 ${
-                      isScrolled ? "text-[13px]" : "text-[14px]"
+                    className={`font-bold leading-snug transition-all duration-300 ${
+                      isScrolled ? "text-[15px]" : "text-[16px]"
                     }`}
                   >
                     Development Corporation Ltd.
                   </div>
                   <div
-                    className={`opacity-80 mt-1 leading-snug transition-all duration-300 ${
-                      isScrolled ? "text-[11px]" : "text-[12px]"
+                    className={`text-[#c9a962] font-medium mt-1 leading-snug transition-all duration-300 ${
+                      isScrolled ? "text-[13px]" : "text-[14px]"
                     }`}
                   >
                     (A State Government Undertaking)
@@ -178,60 +191,55 @@ export default function Navbar() {
                 <Image
                   src="/cbn.png"
                   alt="Chief Minister"
-                  width={isScrolled ? 50 : 65}
-                  height={isScrolled ? 50 : 65}
+                  width={130}
+                  height={130}
                   className={`transition-all duration-300 ${
-                    isScrolled ? "h-[50px]" : "h-[65px]"
+                    isScrolled ? "h-[50px]" : "h-[65px] "
                   } w-auto object-contain cursor-pointer`}
+                  quality={100}
                 />
                 <Link href="/">
                   <Image
-                    src="/Logo-1.png"
+                    src="/logos/logos/lep-col.png"
                     alt="Lepakshi Logo"
-                    width={isScrolled ? 50 : 65}
-                    height={isScrolled ? 50 : 65}
+                    width={130}
+                    height={130}
                     className={`transition-all duration-300 ${
-                      isScrolled ? "h-[50px]" : "h-[65px]"
+                      isScrolled ? "h-[50px]" : "h-[65px] brightness-0 invert"  
                     } w-auto object-contain cursor-pointer hover:scale-110`}
+                    quality={100}
                   />
                 </Link>
-                <Image
-                  src="/logo.png"
-                  alt="Government Seal"
-                  width={isScrolled ? 50 : 65}
-                  height={isScrolled ? 50 : 65}
-                  className={`transition-all duration-300 ${
-                    isScrolled ? "h-[50px]" : "h-[65px]"
-                  } w-auto object-contain cursor-pointer`}
-                />
+
                 <Image
                   src="/savitha.png"
                   alt="Minister"
-                  width={isScrolled ? 50 : 65}
-                  height={isScrolled ? 50 : 65}
+                  width={130}
+                  height={130}
                   className={`transition-all duration-300 ${
                     isScrolled ? "h-[50px]" : "h-[65px]"
                   } w-auto object-contain cursor-pointer`}
+                  quality={100}
                 />
               </div>
 
               {/* RIGHT SECTION - Social Media Icons */}
               <div className="flex items-center gap-2.5 flex-shrink-0 min-w-[280px] justify-end">
                 {socialLinks.map(({ name, href, aria, Icon }) => (
-                  <a
+                  <Link
                     key={name}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     aria-label={aria}
-                    className={`w-9 h-9 rounded-full backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg ${
                       isScrolled
-                        ? "bg-[#c9a227]/20 border border-[#c9a227]/30 text-[#3d3428] hover:bg-[#c9a227]/30"
-                        : "bg-white/20 border border-white/30 text-white hover:bg-white/30"
+                        ? "bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#c9a962]/20 text-[#2c2c2c] hover:border-[#c9a962] hover:text-[#c9a962] hover:bg-[#c9a962]/5"
+                        : "bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50"
                     }`}
                   >
                     <Icon className="" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -241,10 +249,10 @@ export default function Navbar() {
               <button
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 hover:bg-opacity-10 rounded transition-colors cursor-pointer ${
+                className={`p-2 rounded transition-all duration-300 cursor-pointer ${
                   isScrolled || isMobileMenuOpen
-                    ? "text-[#3d3428] hover:bg-[#c9a227]"
-                    : "text-white hover:bg-white"
+                    ? "text-[#2c2c2c] hover:text-[#c9a962] hover:bg-[#c9a962]/10"
+                    : "text-white hover:text-[#c9a962] hover:bg-white/10"
                 }`}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -254,89 +262,86 @@ export default function Navbar() {
                 <Image
                   src="/cbn.png"
                   alt="CBN"
-                  width={45}
-                  height={45}
+                  width={90}
+                  height={90}
                   className="h-11 w-auto object-contain cursor-pointer"
+                  quality={100}
                 />
                 <Link href="/">
                   <Image
                     src="/Logo-1.png"
                     alt="Lepakshi"
-                    width={45}
-                    height={45}
+                    width={90}
+                    height={90}
                     className="h-11 w-auto object-contain cursor-pointer"
+                    quality={100}
                   />
                 </Link>
                 <Image
                   src="/savitha.png"
                   alt="Savitha"
-                  width={45}
-                  height={45}
+                  width={90}
+                  height={90}
                   className="h-11 w-auto object-contain cursor-pointer"
+                  quality={100}
                 />
               </div>
-
-              <button
-                aria-label="Search"
-                className={`p-2 hover:bg-opacity-10 rounded transition-colors cursor-pointer ${
-                  isScrolled || isMobileMenuOpen
-                    ? "text-[#3d3428] hover:bg-[#c9a227]"
-                    : "text-white hover:bg-white"
-                }`}
-              >
-                <Search size={20} />
-              </button>
             </div>
           </div>
         </div>
 
         {/* NAVIGATION MENU */}
-        <div
-          className={`border-t transition-colors duration-300 ${
-            isScrolled || isMobileMenuOpen
-              ? "border-[#c9a227]/20 bg-white/50 backdrop-blur-sm"
-              : "border-white/10"
-          }`}
-        >
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+        <div className={`border-y transition-colors duration-300 ${
+          isScrolled || isMobileMenuOpen
+            ? "border-[#c9a962]/20 bg-white/50 backdrop-blur-sm"
+            : "border-white/10 bg-transparent"
+        }`}>
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-8 ">
             {/* DESKTOP NAVIGATION */}
-            <div className="hidden lg:flex items-center justify-between">
-              <nav className="flex items-center flex-1">
+            <div className="hidden lg:flex items-center justify-center ">
+              <nav className="flex items-center flex-1 justify-center">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className={`group relative px-4 py-3 text-[11px] font-bold tracking-wider flex items-center gap-1.5 transition-all duration-200 font-[family-name:var(--font-montserrat)] ${
-                      isScrolled
-                        ? "text-[#3d3428] hover:text-[#c9a227]"
-                        : "text-white hover:text-[#c9a227]"
-                    }`}
-                  >
-                    <span className="relative z-10">{item.label}</span>
-                    {item.hasDropdown && (
-                      <ChevronDown
-                        size={12}
-                        className="opacity-70 group-hover:opacity-100 transition-opacity mt-0.5"
-                      />
+                  <div key={item.label} className="relative group/nav">
+                    <Link
+                      href={item.href}
+                      className={`group relative px-4 py-3 text-[13px] font-bold tracking-wider flex items-center gap-1.5 transition-all duration-200 font-[family-name:var(--font-montserrat)] ${
+                        isScrolled
+                          ? "text-[#2c2c2c] hover:text-[#c9a962]"
+                          : "text-white hover:text-[#c9a962]"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.label}</span>
+                      {item.hasDropdown && (
+                        <ChevronDown
+                          size={12}
+                          className="opacity-70 group-hover:opacity-100 transition-opacity mt-0.5"
+                        />
+                      )}
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#c9a962] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    </Link>
+
+                    {/* Dropdown Menu */}
+                    {item.hasDropdown && item.children && (
+                      <div className="absolute top-full left-0 min-w-[220px] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 pt-2">
+                        <div className="bg-white border-2 border-[#c9a962]/20 shadow-2xl shadow-gray-400/30 overflow-hidden">
+                          {/* Gold top border */}
+                          <div className="h-1 bg-gradient-to-r from-[#c9a962] via-[#e0ae31] to-[#c9a962]" />
+
+                          {item.children.map((child, index) => (
+                            <Link
+                              key={child.label}
+                              href={child.href}
+                              className="block px-6 py-3 text-[13px] font-semibold text-[#2c2c2c] hover:text-[#c9a962] hover:bg-[#c9a962]/5 transition-all duration-200 font-[family-name:var(--font-montserrat)] border-b border-[#c9a962]/10 last:border-b-0"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     )}
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#c9a227] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-                    />
-                  </Link>
+                  </div>
                 ))}
               </nav>
-
-              {/* SEARCH BUTTON */}
-              <button
-                aria-label="Search"
-                className={`p-3 rounded transition-all duration-200 flex-shrink-0 cursor-pointer ${
-                  isScrolled
-                    ? "text-[#3d3428] hover:text-[#c9a227] hover:bg-[#c9a227]/10"
-                    : "text-white hover:text-[#c9a227] hover:bg-white/10"
-                }`}
-              >
-                <Search size={18} strokeWidth={2} />
-              </button>
             </div>
           </div>
         </div>
@@ -348,7 +353,7 @@ export default function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="lg:hidden fixed inset-0 z-[9998] bg-gradient-to-br from-[#3d3428] via-[#4a3f2f] to-[#5a4d3a] overflow-y-auto"
+          className="lg:hidden fixed inset-0 z-[9998] bg-gradient-to-br from-white via-[#faf8f5] to-[#f8f5ef] overflow-y-auto"
           style={{ paddingTop: "80px" }}
         >
           <nav className="max-w-[1400px] mx-auto px-6 py-8">
@@ -361,7 +366,7 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="block px-4 py-4 text-white text-base font-semibold border-b border-white/10 last:border-b-0 hover:bg-white/10 transition-all flex items-center justify-between cursor-pointer group font-[family-name:var(--font-montserrat)]"
+                  className="block px-4 py-4 text-[#2c2c2c] text-base font-semibold border-b border-[#c9a962]/20 last:border-b-0 hover:bg-[#c9a962]/10 hover:text-[#c9a962] transition-all flex items-center justify-between cursor-pointer group font-[family-name:var(--font-montserrat)]"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="group-hover:translate-x-2 transition-transform duration-200">
@@ -375,7 +380,7 @@ export default function Navbar() {
             ))}
 
             {/* Mobile Social Links */}
-            <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-white/10">
+            <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-[#c9a962]/20">
               {socialLinks.map(({ name, href, aria, Icon }) => (
                 <a
                   key={name}
@@ -383,9 +388,9 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                   aria-label={aria}
-                  className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-[#c9a227] hover:scale-110 hover:shadow-lg border border-white/30"
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#c9a962]/30 flex items-center justify-center transition-all duration-300 hover:bg-[#c9a962]/10 hover:border-[#c9a962] hover:scale-110 hover:shadow-lg text-[#2c2c2c] hover:text-[#c9a962]"
                 >
-                  <Icon className="text-white" />
+                  <Icon />
                 </a>
               ))}
             </div>

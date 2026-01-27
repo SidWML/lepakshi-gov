@@ -3,20 +3,16 @@ import Categories from "./Categories";
 import Hero from "./Hero";
 import NewsEvent from "./NewsEvents";
 import Video from "./Video";
+import Stats from "./Stats";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#faf8f5]">
       <Hero />
-      <div className="mt-8 md:mt-12">
-        <Categories />
-      </div>
-      <div className="mt-8 md:mt-12">
-        <NewsEvent />
-      </div>
-      <div className="mt-8 md:mt-12">
-        <Video />
-      </div>
+      <Stats />
+      <Categories />
+      <NewsEvent />
+      <Video />
     </div>
   );
 }
