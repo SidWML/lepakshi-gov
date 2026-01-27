@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Search,
-  Menu,
-  ChevronDown,
-} from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
+import { Search, Menu, ChevronDown, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 type SocialLink = {
   name: string;
@@ -17,16 +15,19 @@ type SocialLink = {
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   const navItems = [
     { label: "HOME", href: "/" },
-    { label: "ABOUT US", href: "/about", hasDropdown: true },
+    { label: "HERITAGE", href: "/heritage" },
+    { label: "CORPORATE PROFILE", href: "/corporate-profile" },
+    { label: "CLUSTER MAP", href: "/cluster-map" },
+    { label: "ARTISAN STORIES", href: "/artisan-stories" },
     { label: "PRODUCTS", href: "/products", hasDropdown: true },
-    { label: "ARTISAN DESK", href: "/artisan-desk", hasDropdown: true },
     { label: "NEWS & EVENTS", href: "/news-events" },
-    { label: "DOWNLOADS", href: "/downloads" },
     { label: "TENDERS", href: "/tenders" },
-    { label: "E-SHOP", href: "/e-shop", hasDropdown: true },
     { label: "CONTACT US", href: "/contact" },
   ];
 
@@ -37,7 +38,7 @@ export default function Navbar() {
       aria: "Facebook social link",
       Icon: () => (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
         </svg>
       ),
     },
@@ -47,7 +48,7 @@ export default function Navbar() {
       aria: "X social link",
       Icon: () => (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
         </svg>
       ),
     },
@@ -57,7 +58,7 @@ export default function Navbar() {
       aria: "Instagram social link",
       Icon: () => (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
         </svg>
       ),
     },
@@ -67,7 +68,7 @@ export default function Navbar() {
       aria: "YouTube social link",
       Icon: () => (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
         </svg>
       ),
     },
@@ -83,70 +84,301 @@ export default function Navbar() {
     },
   ];
 
+  // Scroll behavior
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = lastScrollY.current;
+    setIsScrolled(latest > 50);
+
+    if (latest < 50) {
+      setIsHeaderVisible(true);
+    } else {
+      if (latest < previous) {
+        setIsHeaderVisible(true);
+      } else if (latest > previous + 5) {
+        setIsHeaderVisible(false);
+      }
+    }
+    lastScrollY.current = latest;
+  });
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <header className="w-full sticky top-0 z-50 shadow-lg">
-      {/* TOP HEADER SECTION */}
-      <div className="bg-gradient-to-r from-[#480707] via-[#742222] to-[#470606]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-1">
-          {/* DESKTOP LAYOUT */}
-          <div className="hidden lg:flex items-center justify-between gap-6">
-            {/* LEFT SECTION - Government Logo & Text */}
-            <div className="flex items-center gap-5 flex-shrink-0 min-w-[280px]">
-              <Image
-                src="/AP-emblem-logo.png"
-                alt="AP Government Emblem"
-                width={85}
-                height={85}
-                className="h-[85px] w-auto object-contain cursor-pointer"
-                priority
-              />
-              <div className="text-white leading-relaxed">
-                <div className="text-[14px] font-medium leading-snug">
-                  Andhra Pradesh Handicrafts
+    <>
+      <motion.header
+        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
+          isScrolled || isMobileMenuOpen
+            ? "bg-[#f8f6f1] shadow-xl"
+            : "bg-gradient-to-r from-[#3d3428] via-[#4a3f2f] to-[#3d3428]"
+        }`}
+        initial={{ y: 0 }}
+        animate={{ y: isHeaderVisible || isMobileMenuOpen ? 0 : -200 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
+        {/* TOP HEADER SECTION */}
+        <div
+          className={`transition-all duration-300 ${
+            isScrolled ? "py-2" : "py-3"
+          }`}
+        >
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+            {/* DESKTOP LAYOUT */}
+            <div className="hidden lg:flex items-center justify-between gap-6">
+              {/* LEFT SECTION - Government Logo & Text */}
+              <div className="flex items-center gap-5 flex-shrink-0 min-w-[280px]">
+                <Image
+                  src="/AP-emblem-logo.png"
+                  alt="AP Government Emblem"
+                  width={isScrolled ? 60 : 75}
+                  height={isScrolled ? 60 : 75}
+                  className={`transition-all duration-300 ${
+                    isScrolled ? "h-[60px]" : "h-[75px]"
+                  } w-auto object-contain cursor-pointer`}
+                  priority
+                />
+                <div
+                  className={`leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] ${
+                    isScrolled ? "text-[#3d3428]" : "text-white"
+                  }`}
+                >
+                  <div
+                    className={`font-semibold leading-snug transition-all duration-300 ${
+                      isScrolled ? "text-[13px]" : "text-[14px]"
+                    }`}
+                  >
+                    Andhra Pradesh Handicrafts
+                  </div>
+                  <div
+                    className={`font-semibold leading-snug transition-all duration-300 ${
+                      isScrolled ? "text-[13px]" : "text-[14px]"
+                    }`}
+                  >
+                    Development Corporation Ltd.
+                  </div>
+                  <div
+                    className={`opacity-80 mt-1 leading-snug transition-all duration-300 ${
+                      isScrolled ? "text-[11px]" : "text-[12px]"
+                    }`}
+                  >
+                    (A State Government Undertaking)
+                  </div>
                 </div>
-                <div className="text-[14px] font-medium leading-snug">
-                  Development Corporation Ltd.
-                </div>
-                <div className="text-[12px] opacity-90 mt-1.5 leading-snug">
-                  (A State Government Undertaking)
-                </div>
+              </div>
+
+              {/* CENTER SECTION - Main Logos */}
+              <div className="flex items-center justify-center gap-6 flex-1">
+                <Image
+                  src="/cbn.png"
+                  alt="Chief Minister"
+                  width={isScrolled ? 50 : 65}
+                  height={isScrolled ? 50 : 65}
+                  className={`transition-all duration-300 ${
+                    isScrolled ? "h-[50px]" : "h-[65px]"
+                  } w-auto object-contain cursor-pointer`}
+                />
+                <Link href="/">
+                  <Image
+                    src="/Logo-1.png"
+                    alt="Lepakshi Logo"
+                    width={isScrolled ? 50 : 65}
+                    height={isScrolled ? 50 : 65}
+                    className={`transition-all duration-300 ${
+                      isScrolled ? "h-[50px]" : "h-[65px]"
+                    } w-auto object-contain cursor-pointer hover:scale-110`}
+                  />
+                </Link>
+                <Image
+                  src="/logo.png"
+                  alt="Government Seal"
+                  width={isScrolled ? 50 : 65}
+                  height={isScrolled ? 50 : 65}
+                  className={`transition-all duration-300 ${
+                    isScrolled ? "h-[50px]" : "h-[65px]"
+                  } w-auto object-contain cursor-pointer`}
+                />
+                <Image
+                  src="/savitha.png"
+                  alt="Minister"
+                  width={isScrolled ? 50 : 65}
+                  height={isScrolled ? 50 : 65}
+                  className={`transition-all duration-300 ${
+                    isScrolled ? "h-[50px]" : "h-[65px]"
+                  } w-auto object-contain cursor-pointer`}
+                />
+              </div>
+
+              {/* RIGHT SECTION - Social Media Icons */}
+              <div className="flex items-center gap-2.5 flex-shrink-0 min-w-[280px] justify-end">
+                {socialLinks.map(({ name, href, aria, Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    aria-label={aria}
+                    className={`w-9 h-9 rounded-full backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg ${
+                      isScrolled
+                        ? "bg-[#c9a227]/20 border border-[#c9a227]/30 text-[#3d3428] hover:bg-[#c9a227]/30"
+                        : "bg-white/20 border border-white/30 text-white hover:bg-white/30"
+                    }`}
+                  >
+                    <Icon className="" />
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* CENTER SECTION - Main Logos */}
-            <div className="flex items-center justify-center gap-6 flex-1">
-              <Image
-                src="/cbn.png"
-                alt="Chief Minister"
-                width={75}
-                height={75}
-                className="h-[75px] w-auto object-contain cursor-pointer"
-              />
-              <Image
-                src="/Logo-1.png"
-                alt="Lepakshi Logo"
-                width={75}
-                height={75}
-                className="h-[75px] w-auto object-contain cursor-pointer"
-              />
-              <Image
-                src="/logo.png"
-                alt="Government Seal"
-                width={75}
-                height={75}
-                className="h-[75px] w-auto object-contain cursor-pointer"
-              />
-              <Image
-                src="/savitha.png"
-                alt="Minister"
-                width={75}
-                height={75}
-                className="h-[75px] w-auto object-contain cursor-pointer"
-              />
-            </div>
+            {/* MOBILE LAYOUT */}
+            <div className="lg:hidden flex items-center justify-between">
+              <button
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`p-2 hover:bg-opacity-10 rounded transition-colors cursor-pointer ${
+                  isScrolled || isMobileMenuOpen
+                    ? "text-[#3d3428] hover:bg-[#c9a227]"
+                    : "text-white hover:bg-white"
+                }`}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
 
-            {/* RIGHT SECTION - Social Media Icons */}
-            <div className="flex items-center gap-2.5 flex-shrink-0 min-w-[280px] justify-end">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/cbn.png"
+                  alt="CBN"
+                  width={45}
+                  height={45}
+                  className="h-11 w-auto object-contain cursor-pointer"
+                />
+                <Link href="/">
+                  <Image
+                    src="/Logo-1.png"
+                    alt="Lepakshi"
+                    width={45}
+                    height={45}
+                    className="h-11 w-auto object-contain cursor-pointer"
+                  />
+                </Link>
+                <Image
+                  src="/savitha.png"
+                  alt="Savitha"
+                  width={45}
+                  height={45}
+                  className="h-11 w-auto object-contain cursor-pointer"
+                />
+              </div>
+
+              <button
+                aria-label="Search"
+                className={`p-2 hover:bg-opacity-10 rounded transition-colors cursor-pointer ${
+                  isScrolled || isMobileMenuOpen
+                    ? "text-[#3d3428] hover:bg-[#c9a227]"
+                    : "text-white hover:bg-white"
+                }`}
+              >
+                <Search size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* NAVIGATION MENU */}
+        <div
+          className={`border-t transition-colors duration-300 ${
+            isScrolled || isMobileMenuOpen
+              ? "border-[#c9a227]/20 bg-white/50 backdrop-blur-sm"
+              : "border-white/10"
+          }`}
+        >
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+            {/* DESKTOP NAVIGATION */}
+            <div className="hidden lg:flex items-center justify-between">
+              <nav className="flex items-center flex-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`group relative px-4 py-3 text-[11px] font-bold tracking-wider flex items-center gap-1.5 transition-all duration-200 font-[family-name:var(--font-montserrat)] ${
+                      isScrolled
+                        ? "text-[#3d3428] hover:text-[#c9a227]"
+                        : "text-white hover:text-[#c9a227]"
+                    }`}
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    {item.hasDropdown && (
+                      <ChevronDown
+                        size={12}
+                        className="opacity-70 group-hover:opacity-100 transition-opacity mt-0.5"
+                      />
+                    )}
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#c9a227] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    />
+                  </Link>
+                ))}
+              </nav>
+
+              {/* SEARCH BUTTON */}
+              <button
+                aria-label="Search"
+                className={`p-3 rounded transition-all duration-200 flex-shrink-0 cursor-pointer ${
+                  isScrolled
+                    ? "text-[#3d3428] hover:text-[#c9a227] hover:bg-[#c9a227]/10"
+                    : "text-white hover:text-[#c9a227] hover:bg-white/10"
+                }`}
+              >
+                <Search size={18} strokeWidth={2} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* MOBILE MENU FULL SCREEN OVERLAY */}
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="lg:hidden fixed inset-0 z-[9998] bg-gradient-to-br from-[#3d3428] via-[#4a3f2f] to-[#5a4d3a] overflow-y-auto"
+          style={{ paddingTop: "80px" }}
+        >
+          <nav className="max-w-[1400px] mx-auto px-6 py-8">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <Link
+                  href={item.href}
+                  className="block px-4 py-4 text-white text-base font-semibold border-b border-white/10 last:border-b-0 hover:bg-white/10 transition-all flex items-center justify-between cursor-pointer group font-[family-name:var(--font-montserrat)]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="group-hover:translate-x-2 transition-transform duration-200">
+                    {item.label}
+                  </span>
+                  {item.hasDropdown && (
+                    <ChevronDown size={16} className="opacity-70" />
+                  )}
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Mobile Social Links */}
+            <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-white/10">
               {socialLinks.map(({ name, href, aria, Icon }) => (
                 <a
                   key={name}
@@ -154,112 +386,15 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                   aria-label={aria}
-                  className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white/30 hover:scale-110 hover:shadow-lg border border-white/30"
+                  className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-[#c9a227] hover:scale-110 hover:shadow-lg border border-white/30"
                 >
                   <Icon className="text-white" />
                 </a>
               ))}
             </div>
-          </div>
-
-          {/* MOBILE LAYOUT */}
-          <div className="lg:hidden flex items-center justify-between py-2">
-            <button
-              aria-label="Open menu"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white p-2 hover:bg-white/10 rounded transition-colors cursor-pointer"
-            >
-              <Menu size={24} />
-            </button>
-
-            <div className="flex items-center gap-3">
-              <Image
-                src="/cbn.png"
-                alt="CBN"
-                width={50}
-                height={50}
-                className="h-12 w-auto object-contain cursor-pointer"
-              />
-              <Image
-                src="/Logo-1.png"
-                alt="Lepakshi"
-                width={50}
-                height={50}
-                className="h-12 w-auto object-contain cursor-pointer"
-              />
-              <Image
-                src="/savitha.png"
-                alt="Savitha"
-                width={50}
-                height={50}
-                className="h-12 w-auto object-contain cursor-pointer"
-              />
-            </div>
-
-            <button
-              aria-label="Search"
-              className="text-white p-2 hover:bg-white/10 rounded transition-colors cursor-pointer"
-            >
-              <Search size={20} />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* NAVIGATION MENU */}
-      <div className="bg-[#460505] border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          {/* DESKTOP NAVIGATION */}
-          <div className="hidden lg:flex items-center justify-between">
-            <nav className="flex items-center flex-1">
-              {navItems.map((item, index) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group relative px-5 py-3 text-white text-[12px] font-semibold tracking-wide flex items-center gap-1.5 transition-all duration-200 hover:text-white/80 cursor-pointer"
-                >
-                  <span className="relative z-10">{item.label}</span>
-                  {item.hasDropdown && (
-                    <ChevronDown
-                      size={13}
-                      className="opacity-80 group-hover:opacity-100 transition-opacity mt-0.5"
-                    />
-                  )}
-                </a>
-              ))}
-            </nav>
-
-            {/* SEARCH BUTTON */}
-            <button
-              aria-label="Search"
-              className="text-white p-4 hover:text-white/80 rounded transition-colors flex-shrink-0 cursor-pointer"
-            >
-              <Search size={18} strokeWidth={2} />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* MOBILE MENU DROPDOWN */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[#5a0909] border-t border-white/10">
-          <nav className="max-w-[1400px] mx-auto px-4 py-2">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="block px-4 py-3 text-white text-sm font-medium border-b border-white/10 last:border-b-0 hover:bg-white/10 transition-colors flex items-center justify-between cursor-pointer"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span>{item.label}</span>
-                {item.hasDropdown && (
-                  <ChevronDown size={14} className="opacity-70" />
-                )}
-              </a>
-            ))}
           </nav>
-        </div>
+        </motion.div>
       )}
-    </header>
+    </>
   );
 }
