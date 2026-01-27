@@ -20,7 +20,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: "HOME", href: "/" },
-    { label: "ABOUT US", href: "/about", hasDropdown: true },
+    { label: "ABOUT US", href: "/aboutus", hasDropdown: true },
     { label: "PRODUCTS", href: "/products", hasDropdown: true },
     { label: "ARTISAN DESK", href: "/artisan-desk", hasDropdown: true },
     { label: "NEWS & EVENTS", href: "/news-events" },
