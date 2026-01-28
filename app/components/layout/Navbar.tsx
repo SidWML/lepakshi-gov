@@ -42,9 +42,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const lastScrollY = useRef(0);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { label: "HOME", href: "/" },
     {
       label: "ABOUT US",
@@ -330,6 +331,11 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
+  // Toggle mobile menu item expansion
+  const toggleMobileItem = (label: string) => {
+    setExpandedMobileItem(expandedMobileItem === label ? null : label);
+  };
+
   return (
     <>
       <motion.header
@@ -348,14 +354,15 @@ export default function Navbar() {
             isScrolled ? "opacity-100" : "opacity-0"
           }`}
         />
+        
         {/* TOP HEADER SECTION */}
         <div
           className={`transition-all duration-300 ${
-            isScrolled ? "py-2" : "py-4"
+            isScrolled ? "py-2" : "py-3 sm:py-4"
           }`}
         >
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-            {/* DESKTOP LAYOUT */}
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            {/* DESKTOP LAYOUT (1024px and up) */}
             <div className="hidden lg:flex items-center justify-between gap-6">
               {/* LEFT SECTION - Government Logo & Text */}
               <div className="flex items-center gap-5 flex-shrink-0 min-w-[280px]">
@@ -407,7 +414,7 @@ export default function Navbar() {
                   width={130}
                   height={130}
                   className={`transition-all duration-300 border rounded-full ${
-                    isScrolled ? "h-[50px]" : "h-[85px] "
+                    isScrolled ? "h-[50px]" : "h-[85px]"
                   } w-auto object-contain cursor-pointer`}
                   quality={100}
                 />
@@ -457,12 +464,12 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* MOBILE LAYOUT */}
-            <div className="lg:hidden flex items-center justify-between">
+            {/* TABLET LAYOUT (768px - 1023px) */}
+            <div className="hidden md:flex lg:hidden items-center justify-between gap-4">
               <button
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 rounded transition-all duration-300 cursor-pointer ${
+                className={`p-2 rounded transition-all duration-300 cursor-pointer flex-shrink-0 ${
                   isScrolled || isMobileMenuOpen
                     ? "text-[#2c2c2c] hover:text-[#c9a962] hover:bg-[#c9a962]/10"
                     : "text-white hover:text-[#c9a962] hover:bg-white/10"
@@ -471,49 +478,138 @@ export default function Navbar() {
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 flex-1 justify-center">
+                <Image
+                  src="/AP-emblem-logo.png"
+                  alt="AP Government"
+                  width={100}
+                  height={100}
+                  className={`transition-all duration-300 ${
+                    isScrolled ? "h-[45px]" : "h-[55px]"
+                  } w-auto object-contain cursor-pointer`}
+                  quality={100}
+                />
                 <Image
                   src="/cbn.png"
-                  alt="CBN"
-                  width={90}
-                  height={90}
-                  className="h-11 w-auto object-contain cursor-pointer"
+                  alt="Chief Minister"
+                  width={100}
+                  height={100}
+                  className={`transition-all duration-300 border rounded-full ${
+                    isScrolled ? "h-[45px]" : "h-[55px]"
+                  } w-auto object-contain cursor-pointer`}
                   quality={100}
                 />
                 <Link href="/">
                   <Image
-                    src="/Logo-1.png"
-                    alt="Lepakshi"
-                    width={90}
-                    height={90}
-                    className="h-11 w-auto object-contain cursor-pointer"
+                    src={isScrolled ? "/Logo-1.png" : "/logos/logos/lep-col.png"}
+                    alt="Lepakshi Logo"
+                    width={100}
+                    height={100}
+                    className={`transition-all duration-300 ${
+                      isScrolled ? "h-[45px]" : "h-[55px] brightness-0 invert"
+                    } w-auto object-contain cursor-pointer hover:scale-105`}
                     quality={100}
                   />
                 </Link>
                 <Image
                   src="/savitha.png"
-                  alt="Savitha"
-                  width={90}
-                  height={90}
-                  className="h-11 w-auto object-contain cursor-pointer"
+                  alt="Minister"
+                  width={100}
+                  height={100}
+                  className={`transition-all duration-300 border rounded-full ${
+                    isScrolled ? "h-[45px]" : "h-[55px]"
+                  } w-auto object-contain cursor-pointer`}
                   quality={100}
                 />
               </div>
+
+              {/* Tablet Social Icons - Compact */}
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                {socialLinks.slice(0, 3).map(({ name, href, aria, Icon }) => (
+                  <Link
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    aria-label={aria}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${
+                      isScrolled || isMobileMenuOpen
+                        ? "bg-gradient-to-br from-[#f8f5ef] to-white border border-[#c9a962]/20 text-[#2c2c2c] hover:border-[#c9a962] hover:text-[#c9a962]"
+                        : "bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20"
+                    }`}
+                  >
+                    <Icon />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* MOBILE LAYOUT (below 768px) */}
+            <div className="flex md:hidden items-center justify-between">
+              <button
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`p-2 rounded transition-all duration-300 cursor-pointer flex-shrink-0 ${
+                  isScrolled || isMobileMenuOpen
+                    ? "text-[#2c2c2c] hover:text-[#c9a962] hover:bg-[#c9a962]/10"
+                    : "text-white hover:text-[#c9a962] hover:bg-white/10"
+                }`}
+              >
+                {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+
+              <div className="flex items-center gap-2 flex-1 justify-center">
+                <Image
+                  src="/cbn.png"
+                  alt="Chief Minister"
+                  width={80}
+                  height={80}
+                  className={`transition-all duration-300 border rounded-full ${
+                    isScrolled ? "h-[38px]" : "h-[42px]"
+                  } w-auto object-contain cursor-pointer`}
+                  quality={100}
+                />
+                <Link href="/">
+                  <Image
+                    src="/Logo-1.png"
+                    alt="Lepakshi Logo"
+                    width={80}
+                    height={80}
+                    className={`transition-all duration-300 ${
+                      isScrolled ? "h-[38px]" : "h-[42px]"
+                    } w-auto object-contain cursor-pointer`}
+                    quality={100}
+                  />
+                </Link>
+                <Image
+                  src="/savitha.png"
+                  alt="Minister"
+                  width={80}
+                  height={80}
+                  className={`transition-all duration-300 border rounded-full ${
+                    isScrolled ? "h-[38px]" : "h-[42px]"
+                  } w-auto object-contain cursor-pointer`}
+                  quality={100}
+                />
+              </div>
+
+              {/* Mobile placeholder for symmetry */}
+              <div className="w-10 flex-shrink-0"></div>
             </div>
           </div>
         </div>
 
-        {/* NAVIGATION MENU */}
+        {/* NAVIGATION MENU - Desktop Only */}
         <div
-          className={`border-y transition-colors duration-300 ${
+          className={`hidden lg:block border-y transition-colors duration-300 ${
             isScrolled || isMobileMenuOpen
               ? "border-[#c9a962]/20 bg-white/50 backdrop-blur-sm"
               : "border-white/10 bg-transparent"
           }`}
         >
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-8 ">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
             {/* DESKTOP NAVIGATION */}
-            <div className="hidden lg:flex items-center justify-center ">
+            <div className="flex items-center justify-center">
               <nav className="flex items-center flex-1 justify-center">
                 {navItems.map((item) => (
                   <div key={item.label} className="relative group/nav">
@@ -536,58 +632,75 @@ export default function Navbar() {
                     </Link>
 
                     {/* Dropdown Menu */}
-{item.hasDropdown && item.isMegaMenu && (
-  <div className="absolute left-1/2 top-full w-[1200px] -translate-x-1/2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 pt-6 z-50">
-    <div className="bg-white shadow-2xl border border-gray-200 p-8">
-      <div className="grid grid-cols-4 gap-x-12">
-        {/* Create 4 columns dynamically */}
-        {[1, 2, 3, 4].map((colNumber) => {
-          const groupsInColumn = (item.children as MegaMenuGroup[]).filter(
-            (group) => group.col === colNumber
-          );
-          
-          return (
-            <div key={`col-${colNumber}`} className="space-y-8">
-              {groupsInColumn.map((group: MegaMenuGroup) => (
-                <div key={group.title}>
-                  <h3 className="text-[22px] font-medium text-[#444] mb-4">
-                    {group.title}
-                  </h3>
-                  <ul className="space-y-4">
-                    {group.items.map((child: MegaMenuItem) => (
-                      <li key={child.label}>
-                        <Link
-                          href={child.href}
-                          className="group flex items-start justify-between gap-4 hover:bg-gray-50 p-2 -m-2 rounded transition-colors"
-                        >
-                          <div>
-                            <div className="text-[16px] font-semibold text-[#5a0a0a] group-hover:text-[#c9a962] transition-colors">
-                              {child.label}
-                            </div>
-                            {child.location && (
-                              <div className="text-[14px] text-gray-500 mt-1">
-                                {child.location}
-                              </div>
-                            )}
+                    {item.hasDropdown && item.isMegaMenu && (
+                      <div className="absolute left-1/2 top-full w-[1200px] -translate-x-1/2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 pt-6 z-50">
+                        <div className="bg-white shadow-2xl border border-gray-200 p-8">
+                          <div className="grid grid-cols-4 gap-x-12">
+                            {/* Create 4 columns dynamically */}
+                            {[1, 2, 3, 4].map((colNumber) => {
+                              const groupsInColumn = (item.children as MegaMenuGroup[]).filter(
+                                (group) => group.col === colNumber
+                              );
+                              
+                              return (
+                                <div key={`col-${colNumber}`} className="space-y-8">
+                                  {groupsInColumn.map((group: MegaMenuGroup) => (
+                                    <div key={group.title}>
+                                      <h3 className="text-[22px] font-medium text-[#444] mb-4">
+                                        {group.title}
+                                      </h3>
+                                      <ul className="space-y-4">
+                                        {group.items.map((child: MegaMenuItem) => (
+                                          <li key={child.label}>
+                                            <Link
+                                              href={child.href}
+                                              className="group flex items-start justify-between gap-4 hover:bg-gray-50 p-2 -m-2 rounded transition-colors"
+                                            >
+                                              <div>
+                                                <div className="text-[16px] font-semibold text-[#5a0a0a] group-hover:text-[#c9a962] transition-colors">
+                                                  {child.label}
+                                                </div>
+                                                {child.location && (
+                                                  <div className="text-[14px] text-gray-500 mt-1">
+                                                    {child.location}
+                                                  </div>
+                                                )}
+                                              </div>
+                                              {child.arrow && (
+                                                <span className="text-[22px] text-gray-600 leading-none transition-transform group-hover:translate-x-1">
+                                                  ›
+                                                </span>
+                                              )}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              );
+                            })}
                           </div>
-                          {child.arrow && (
-                            <span className="text-[22px] text-gray-600 leading-none transition-transform group-hover:translate-x-1">
-                              ›
-                            </span>
-                          )}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-)}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Simple Dropdown for non-mega menu items */}
+                    {item.hasDropdown && !item.isMegaMenu && (
+                      <div className="absolute left-0 top-full min-w-[220px] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 pt-2 z-50">
+                        <div className="bg-white shadow-xl border border-gray-200 rounded-lg overflow-hidden">
+                          {(item.children as Array<{ label: string; href: string }>)?.map((child) => (
+                            <Link
+                              key={child.label}
+                              href={child.href}
+                              className="block px-5 py-3 text-[14px] font-medium text-[#2c2c2c] hover:bg-[#c9a962]/10 hover:text-[#c9a962] transition-colors"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </nav>
@@ -596,7 +709,7 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* MOBILE MENU FULL SCREEN OVERLAY */}
+      {/* MOBILE & TABLET MENU FULL SCREEN OVERLAY */}
       {isMobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -605,31 +718,102 @@ export default function Navbar() {
           className="lg:hidden fixed inset-0 z-[9998] bg-gradient-to-br from-white via-[#faf8f5] to-[#f8f5ef] overflow-y-auto"
           style={{ paddingTop: "80px" }}
         >
-          <nav className="max-w-[1400px] mx-auto px-6 py-8">
+          <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.label}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
+                className="border-b border-[#c9a962]/20 last:border-b-0"
               >
-                <Link
-                  href={item.href}
-                  className="block px-4 py-4 text-[#2c2c2c] text-base font-semibold border-b border-[#c9a962]/20 last:border-b-0 hover:bg-[#c9a962]/10 hover:text-[#c9a962] transition-all flex items-center justify-between cursor-pointer group font-[family-name:var(--font-montserrat)]"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="group-hover:translate-x-2 transition-transform duration-200">
-                    {item.label}
-                  </span>
-                  {item.hasDropdown && (
-                    <ChevronDown size={16} className="opacity-70" />
-                  )}
-                </Link>
+                {!item.hasDropdown ? (
+                  <Link
+                    href={item.href}
+                    className="block px-4 py-4 text-[#2c2c2c] text-base sm:text-lg font-semibold hover:bg-[#c9a962]/10 hover:text-[#c9a962] transition-all cursor-pointer group font-[family-name:var(--font-montserrat)]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span className="group-hover:translate-x-2 transition-transform duration-200 inline-block">
+                      {item.label}
+                    </span>
+                  </Link>
+                ) : (
+                  <div>
+                    <button
+                      onClick={() => toggleMobileItem(item.label)}
+                      className="w-full flex items-center justify-between px-4 py-4 text-[#2c2c2c] text-base sm:text-lg font-semibold hover:bg-[#c9a962]/10 hover:text-[#c9a962] transition-all font-[family-name:var(--font-montserrat)]"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        size={18}
+                        className={`transition-transform duration-300 ${
+                          expandedMobileItem === item.label ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    
+                    {/* Expanded Content */}
+                    {expandedMobileItem === item.label && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="bg-[#f8f5ef]/50 overflow-hidden"
+                      >
+                        {item.isMegaMenu ? (
+                          <div className="px-4 py-4 space-y-6">
+                            {(item.children as MegaMenuGroup[]).map((group) => (
+                              <div key={group.title}>
+                                <h4 className="text-[#c9a962] font-bold text-sm sm:text-base mb-3 uppercase tracking-wide">
+                                  {group.title}
+                                </h4>
+                                <ul className="space-y-2">
+                                  {group.items.map((child) => (
+                                    <li key={child.label}>
+                                      <Link
+                                        href={child.href}
+                                        className="block py-2 px-3 hover:bg-white/50 rounded transition-colors"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                      >
+                                        <div className="text-[#2c2c2c] font-medium text-sm sm:text-base">
+                                          {child.label}
+                                        </div>
+                                        {child.location && (
+                                          <div className="text-gray-500 text-xs sm:text-sm mt-0.5">
+                                            {child.location}
+                                          </div>
+                                        )}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="px-4 py-2">
+                            {(item.children as Array<{ label: string; href: string }>)?.map((child) => (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                className="block py-3 px-3 text-[#2c2c2c] text-sm sm:text-base hover:bg-white/50 rounded transition-colors"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </motion.div>
+                    )}
+                  </div>
+                )}
               </motion.div>
             ))}
 
-            {/* Mobile Social Links */}
-            <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-[#c9a962]/20">
+            {/* Mobile/Tablet Social Links */}
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-[#c9a962]/20">
               {socialLinks.map(({ name, href, aria, Icon }) => (
                 <a
                   key={name}
@@ -637,11 +821,23 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                   aria-label={aria}
-                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#c9a962]/30 flex items-center justify-center transition-all duration-300 hover:bg-[#c9a962]/10 hover:border-[#c9a962] hover:scale-110 hover:shadow-lg text-[#2c2c2c] hover:text-[#c9a962]"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#c9a962]/30 flex items-center justify-center transition-all duration-300 hover:bg-[#c9a962]/10 hover:border-[#c9a962] hover:scale-110 hover:shadow-lg text-[#2c2c2c] hover:text-[#c9a962]"
                 >
                   <Icon />
                 </a>
               ))}
+            </div>
+
+            {/* Mobile Government Text */}
+            <div className="text-center mt-8 px-4">
+              <div className="text-[#2c2c2c] font-bold text-sm sm:text-base leading-relaxed font-[family-name:var(--font-montserrat)]">
+                Andhra Pradesh Handicrafts
+                <br />
+                Development Corporation Ltd.
+              </div>
+              <div className="text-[#c9a962] font-medium text-xs sm:text-sm mt-2">
+                (A State Government Undertaking)
+              </div>
             </div>
           </nav>
         </motion.div>
