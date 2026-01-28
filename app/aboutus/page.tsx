@@ -1,6 +1,7 @@
-import AboutUsPage from "@/app/components/AboutUs/About-us"
 import { Suspense } from "react"
-//page for about us
+import ClusterMapPage from "../../components/ClusterMap/cluster-map"
+import AboutUsPage from "../components/AboutUs/About-us"
+
 export default function Aboutus() {
   return (
     <Suspense fallback={<div>Loading...</div>}>

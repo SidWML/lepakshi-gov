@@ -1,6 +1,8 @@
 import { Montserrat, Cormorant_Garamond, Lato, Playfair_Display } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 // Primary font for UI elements
 const montserrat = Montserrat({
@@ -97,7 +99,9 @@ export default function RootLayout({
         style={{ backgroundColor: "#f8f6f1", fontFamily: "var(--font-lato)" }}
         suppressHydrationWarning
       >
+      <Navbar />
         {children}
+      <Footer />      
       </body>
     </html>
   );
