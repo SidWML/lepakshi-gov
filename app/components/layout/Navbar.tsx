@@ -13,6 +13,31 @@ type SocialLink = {
   Icon: React.ElementType;
 };
 
+type MegaMenuItem = {
+  label: string;
+  href: string;
+  location?: string;
+  arrow?: boolean;
+};
+
+type MegaMenuGroup = {
+  title: string;
+  col: number;
+  items: MegaMenuItem[];
+};
+
+type NavItem = {
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+  isMegaMenu?: boolean;
+  children?: MegaMenuGroup[] | Array<{  
+    label: string;
+    href: string;
+  }>;
+};
+
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,8 +55,192 @@ export default function Navbar() {
         { label: "Corporate Profile", href: "/corporate-profile" },
         { label: "Artisan Stories", href: "/artisan-stories" },
         { label: "Cluster Map", href: "/cluster-map" },
-      ]
+      ],
     },
+
+    {
+      label: "PRODUCTS",
+      href: "/products",
+      hasDropdown: true,
+      isMegaMenu: true,
+      children: [
+        {
+          title: "Textile / Weaves",
+          col: 1,
+          items: [
+            {
+              label: "Kalamkari Prints",
+              location: "Machilipatnam, Pedana",
+              href: "/products/textiles/kalamkari",
+            },
+            {
+              label: "Crochet",
+              location: "Narasapur",
+              href: "/products/textiles/crochet",
+              arrow: true,
+            },
+            {
+              label: "Applique / Embroidery Work",
+              location: "Madanapalli",
+              href: "/products/textiles/applique",
+              arrow: true,
+            },
+          ],
+        },
+        {
+          title: "Metal Crafts",
+          col: 1,
+          items: [
+            {
+              label: "Brassware",
+              location: "Budithi",
+              href: "/products/metal/brassware-budithi",
+            },
+            {
+              label: "Bronze Castings",
+              location: "Tirupati",
+              href: "/products/metal/bronze",
+              arrow: true,
+            },
+          ],
+        },
+
+        {
+          title: "Paintings",
+          col: 2,
+          items: [
+            {
+              label: "Kalamkari Paintings",
+              location: "Srikalahasti, Banganapalli",
+              href: "/products/paintings/kalamkari",
+            },
+            {
+              label: "Adivasi Paintings",
+              location: "Seethampeta",
+              href: "/products/paintings/adivasi",
+              arrow: true,
+            },
+            {
+              label: "Leather Paintings",
+              location: "Nimmalakunta, Dharmavaram",
+              href: "/products/paintings/leather",
+            },
+          ],
+        },
+        {
+          title: "Natural Fibres",
+          col: 2,
+          items: [
+            {
+              label: "Palm Leaf",
+              location: "Tuni, Rampachodavaram, Gokavaram, Devipatnam",
+              href: "/products/fibres/palm-leaf",
+              arrow: true,
+            },
+            {
+              label: "Walking Sticks",
+              location: "Rajahmundry",
+              href: "/products/fibres/walking-sticks",
+              arrow: true,
+            },
+          ],
+        },
+
+        {
+          title: "Wood Crafts",
+          col: 3,
+          items: [
+            {
+              label: "Wooden Painted Toys",
+              location: "Kondapalli",
+              href: "/products/wood/painted-toys",
+            },
+            {
+              label: "Lacquerware Toys",
+              location: "Etikoppaka",
+              href: "/products/wood/lacquerware",
+            },
+            {
+              label: "White Wood Birds",
+              location: "Rajahmundry",
+              href: "/products/wood/white-wood-birds",
+              arrow: true,
+            },
+            {
+              label: "Wooden Statues",
+              location: "Tirupati / Settigunta",
+              href: "/products/wood/statues",
+              arrow: true,
+            },
+            {
+              label: "Wall Panels",
+              location: "Tirupati",
+              href: "/products/wood/wall-panels",
+              arrow: true,
+            },
+            {
+              label: "Musical Instruments",
+              location: "Bobbili",
+              href: "/products/wood/instruments",
+            },
+            {
+              label: "Wooden Cutlery",
+              location: "Udayagiri",
+              href: "/products/wood/cutlery",
+            },
+            {
+              label: "Red Sander",
+              location: "Lakshmigiripalli",
+              href: "/products/wood/red-sander",
+              arrow: true,
+            },
+          ],
+        },
+
+        {
+          title: "Jewelry",
+          col: 4,
+          items: [
+            {
+              label: "Imitation Jewellery",
+              location: "Machilipatnam",
+              href: "/products/jewelry/imitation",
+              arrow: true,
+            },
+          ],
+        },
+        {
+          title: "Natural Mineral",
+          col: 4,
+          items: [
+            {
+              label: "Stone Carvings",
+              location: "Durgi, Allagadda",
+              href: "/products/mineral/stone-carvings",
+            },
+            {
+              label: "Pottery / Terracotta",
+              location: "Madanapalle, Palamaneru",
+              href: "/products/mineral/pottery",
+              arrow: true,
+            },
+          ],
+        },
+        {
+          title: "Carpets",
+          col: 4,
+          items: [
+            {
+              label: "Hand Knotted Carpets",
+              location: "Eluru",
+              href: "/products/carpets/hand-knotted",
+              arrow: true,
+            },
+          ],
+        },
+      ],
+    },
+
     { label: "NEWS & EVENTS", href: "/news-events" },
     { label: "DOWNLOADS", href: "/downloads" },
     { label: "TENDERS", href: "/tenders" },
@@ -134,9 +343,11 @@ export default function Navbar() {
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         {/* Top Gold Border Accent */}
-        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#c9a962] to-transparent transition-opacity duration-300 ${
-          isScrolled ? "opacity-100" : "opacity-0"
-        }`} />
+        <div
+          className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#c9a962] to-transparent transition-opacity duration-300 ${
+            isScrolled ? "opacity-100" : "opacity-0"
+          }`}
+        />
         {/* TOP HEADER SECTION */}
         <div
           className={`transition-all duration-300 ${
@@ -159,9 +370,11 @@ export default function Navbar() {
                   quality={100}
                   priority
                 />
-                <div className={`leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] ${
-                  isScrolled ? "text-[#2c2c2c]" : "text-white"
-                }`}>
+                <div
+                  className={`leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] ${
+                    isScrolled ? "text-[#2c2c2c]" : "text-white"
+                  }`}
+                >
                   <div
                     className={`font-bold leading-snug transition-all duration-300 ${
                       isScrolled ? "text-[15px]" : "text-[16px]"
@@ -205,7 +418,7 @@ export default function Navbar() {
                     width={130}
                     height={130}
                     className={`transition-all duration-300 ${
-                      isScrolled ? "h-[50px]" : "h-[65px] brightness-0 invert"  
+                      isScrolled ? "h-[50px]" : "h-[65px] brightness-0 invert"
                     } w-auto object-contain cursor-pointer hover:scale-110`}
                     quality={100}
                   />
@@ -291,11 +504,13 @@ export default function Navbar() {
         </div>
 
         {/* NAVIGATION MENU */}
-        <div className={`border-y transition-colors duration-300 ${
-          isScrolled || isMobileMenuOpen
-            ? "border-[#c9a962]/20 bg-white/50 backdrop-blur-sm"
-            : "border-white/10 bg-transparent"
-        }`}>
+        <div
+          className={`border-y transition-colors duration-300 ${
+            isScrolled || isMobileMenuOpen
+              ? "border-[#c9a962]/20 bg-white/50 backdrop-blur-sm"
+              : "border-white/10 bg-transparent"
+          }`}
+        >
           <div className="max-w-[1400px] mx-auto px-6 lg:px-8 ">
             {/* DESKTOP NAVIGATION */}
             <div className="hidden lg:flex items-center justify-center ">
@@ -321,24 +536,58 @@ export default function Navbar() {
                     </Link>
 
                     {/* Dropdown Menu */}
-                    {item.hasDropdown && item.children && (
-                      <div className="absolute top-full left-0 min-w-[220px] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 pt-2">
-                        <div className="bg-white border-2 border-[#c9a962]/20 shadow-2xl shadow-gray-400/30 overflow-hidden">
-                          {/* Gold top border */}
-                          <div className="h-1 bg-gradient-to-r from-[#c9a962] via-[#e0ae31] to-[#c9a962]" />
-
-                          {item.children.map((child, index) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              className="block px-6 py-3 text-[13px] font-semibold text-[#2c2c2c] hover:text-[#c9a962] hover:bg-[#c9a962]/5 transition-all duration-200 font-[family-name:var(--font-montserrat)] border-b border-[#c9a962]/10 last:border-b-0"
-                            >
+{item.hasDropdown && item.isMegaMenu && (
+  <div className="absolute left-1/2 top-full w-[1200px] -translate-x-1/2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 pt-6 z-50">
+    <div className="bg-white shadow-2xl border border-gray-200 p-8">
+      <div className="grid grid-cols-4 gap-x-12">
+        {/* Create 4 columns dynamically */}
+        {[1, 2, 3, 4].map((colNumber) => {
+          const groupsInColumn = (item.children as MegaMenuGroup[]).filter(
+            (group) => group.col === colNumber
+          );
+          
+          return (
+            <div key={`col-${colNumber}`} className="space-y-8">
+              {groupsInColumn.map((group: MegaMenuGroup) => (
+                <div key={group.title}>
+                  <h3 className="text-[22px] font-medium text-[#444] mb-4">
+                    {group.title}
+                  </h3>
+                  <ul className="space-y-4">
+                    {group.items.map((child: MegaMenuItem) => (
+                      <li key={child.label}>
+                        <Link
+                          href={child.href}
+                          className="group flex items-start justify-between gap-4 hover:bg-gray-50 p-2 -m-2 rounded transition-colors"
+                        >
+                          <div>
+                            <div className="text-[16px] font-semibold text-[#5a0a0a] group-hover:text-[#c9a962] transition-colors">
                               {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                            </div>
+                            {child.location && (
+                              <div className="text-[14px] text-gray-500 mt-1">
+                                {child.location}
+                              </div>
+                            )}
+                          </div>
+                          {child.arrow && (
+                            <span className="text-[22px] text-gray-600 leading-none transition-transform group-hover:translate-x-1">
+                              ›
+                            </span>
+                          )}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+)}
                   </div>
                 ))}
               </nav>
