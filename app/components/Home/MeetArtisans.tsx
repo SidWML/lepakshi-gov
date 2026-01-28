@@ -47,7 +47,7 @@ export default function MeetArtisans() {
       {/* Top divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C9A24D]/40 to-transparent" />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="relative z-10 w-[95%] mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function MeetArtisans() {
         </motion.div>
 
         {/* Artisans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {featuredArtisans.map((artisan, index) => (
             <motion.div
               key={artisan.id}
@@ -143,18 +143,6 @@ export default function MeetArtisans() {
               </Link>
             </motion.div>
           ))}
-        </div>
-
-        {/* View All Artisans CTA */}
-        <div className="text-center">
-          <Link
-            href="/artisan-stories"
-            className="inline-flex items-center gap-2 px-10 py-4
-              bg-[#C9A24D] text-[#3B2A1A] font-bold text-lg
-              hover:bg-white transition-all duration-300 shadow-xl"
-          >
-            Meet All Artisans →
-          </Link>
         </div>
       </div>
 
