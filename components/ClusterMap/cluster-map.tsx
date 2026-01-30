@@ -520,13 +520,13 @@ export default function ClusterMapPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/store-locator"
+              href="https://lepakshihandicrafts.com/store-locator"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#3d3428] text-white font-semibold font-[family-name:var(--font-montserrat)] text-sm hover:bg-[#c9a227] transition-all duration-300"
             >
               Find Nearest Store
             </a>
             <a
-              href="/products"
+              href="https://lepakshihandicrafts.com"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#3d3428] text-[#3d3428] font-semibold font-[family-name:var(--font-montserrat)] text-sm hover:bg-[#3d3428] hover:text-white transition-all duration-300"
             >
               Browse Products
