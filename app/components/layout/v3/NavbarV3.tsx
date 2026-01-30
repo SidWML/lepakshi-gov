@@ -25,8 +25,8 @@ const navLinks = [
     name: "Downloads",
     href: "/downloads",
     submenu: [
-      { name: "Tenders", href: "/downloads/tenders" },
-      { name: "Reports", href: "/downloads/reports" },
+      { name: "Tenders", href: "/tenders" },
+      { name: "Reports", href: "/reports" },
     ],
   },
   { name: "Contact Us", href: "/contact" },
