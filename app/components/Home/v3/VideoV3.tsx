@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Clock, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 const videos = [
   {
@@ -88,15 +88,24 @@ export default function VideoV3() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center max-w-6xl mx-auto mb-16"
         >
-          <span className="inline-block text-[#A53430] text-xs tracking-[0.4em] uppercase font-semibold mb-4">
+          {/* Header with star divider */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-12 bg-[#E0AE31]"></div>
+            <Sparkles className="text-[#E0AE31]" size={20} />
+            <div className="h-px w-12 bg-[#E0AE31]"></div>
+          </div>
+
+          <span className="inline-block text-[#E0AE31] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
             WATCH & LEARN
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white font-[family-name:var(--font-playfair)] mb-6">
-            <span className="text-[#E0AE31]">Stories</span>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-white mb-6">
+            Artisan <span className="text-[#d97706]">Stories</span>
           </h2>
-          <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto">
+
+          <p className="text-white/80 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-16">
             Discover the stories behind our artisans and their timeless crafts.
           </p>
         </motion.div>

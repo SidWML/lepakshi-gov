@@ -96,8 +96,8 @@ export default function NavbarV3() {
 
       {/* Logo Bar */}
       <div
-        className={`relative transition-all duration-500 backdrop-blur-3xl ${
-          isScrolled || isHovered ? "bg-[#F5ECE3]" : "bg-slate-100/5"
+        className={`relative transition-all duration-500 ${
+          pathname !== '/' ? "bg-[#F5ECE3]" : (isScrolled || isHovered ? "bg-[#F5ECE3]" : "bg-slate-100/5")
         }`}
       >
 
@@ -200,7 +200,7 @@ export default function NavbarV3() {
                 href="https://lepakshihandicrafts.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 text-sm font-semibold border-2 border-[#E0AE31] text-[#E0AE31] hover:bg-[#E0AE31] hover:text-[#1a1a1a] transition-all duration-300"
+                className={`px-6 py-2.5 text-sm font-semibold ${isScrolled ? " border-2 border-[#123142] text-[#123142] hover:bg-[#123142] hover:text-[#fff]" : " border-2 border-[#E0AE31] text-[#E0AE31] hover:bg-[#E0AE31] hover:text-[#1a1a1a] "}   transition-all duration-300`}
               >
                 Shop Now
               </Link>
@@ -221,7 +221,7 @@ export default function NavbarV3() {
 
       {/* Navigation Menu Bar - Desktop Only */}
       <nav className={`hidden lg:block relative border-y border-[#E0AE31]/20 transition-all duration-500 ${
-        isScrolled || isHovered ? "bg-white" : ""
+        pathname !== '/' ? "bg-white" : (isScrolled || isHovered ? "bg-white" : "")
       }`}>
         <div className="w-[98%] max-w-none mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between py-2">

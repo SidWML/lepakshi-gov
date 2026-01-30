@@ -281,85 +281,63 @@ export default function ArtisanStoriesPage() {
   return (
     <div className="min-h-screen bg-[#faf8f5]">
       {/* Hero Section */}
-      <section className="relative pt-[100px] pb-20 md:pb-28 bg-gradient-to-br from-[#2c2c2c] via-[#3a3a3a] to-[#2c2c2c] overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden opacity-[0.04]">
-          <div className="absolute top-20 right-20 w-96 h-96">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <defs>
-                <pattern id="mandala" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <circle cx="20" cy="20" r="2" fill="#c9a962" />
-                  <circle cx="20" cy="20" r="8" fill="none" stroke="#c9a962" strokeWidth="0.5" />
-                  <circle cx="20" cy="20" r="15" fill="none" stroke="#c9a962" strokeWidth="0.3" />
-                </pattern>
-              </defs>
-              <rect width="200" height="200" fill="url(#mandala)" />
-            </svg>
-          </div>
-          <div className="absolute bottom-20 left-20 w-96 h-96">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <circle cx="100" cy="100" r="80" fill="none" stroke="#c9a962" strokeWidth="1" />
-              <circle cx="100" cy="100" r="60" fill="none" stroke="#c9a962" strokeWidth="0.5" />
-            </svg>
-          </div>
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#3d3428] via-[#4a3f2f] to-[#5a4d3a]">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
         </div>
 
-        {/* Top Border */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#c9a962] to-transparent" />
+        <div className="relative w-full py-10 md:py-14 lg:py-16">
+          <div className="w-[90%] md:w-[85%] max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              {/* Decorative Element */}
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="w-12 h-[2px] bg-[#c9a227]" />
+                <span className="text-[#c9a227] text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)]">
+                  Master Craftsmen
+                </span>
+                <div className="w-12 h-[2px] bg-[#c9a227]" />
+              </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            {/* Decorative Line */}
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#c9a962]" />
-              <span className="text-[#c9a962] text-sm tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)]">
-                Master Craftsmen
-              </span>
-              <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-[#c9a962]" />
-            </div>
-
-            {/* Main Title */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[0.95] font-[family-name:var(--font-playfair)] tracking-tight mb-6">
-              <span className="block">Artisan</span>
-              <span className="block bg-gradient-to-r from-[#c9a962] via-[#e0ae31] to-[#c9a962] bg-clip-text text-transparent">
-                Stories
-              </span>
-            </h1>
-
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="w-12 h-[2px] bg-[#c9a962]" />
-              <div className="w-3 h-3 rotate-45 border border-[#c9a962]" />
-              <div className="w-12 h-[2px] bg-[#c9a962]" />
-            </div>
-
-            {/* Subtitle */}
-            <p className="text-gray-300 text-lg md:text-xl font-medium tracking-wide font-[family-name:var(--font-montserrat)] max-w-3xl mx-auto mb-6">
-              Discover the remarkable journeys of master craftsmen preserving traditional handicrafts of Andhra Pradesh
-            </p>
-
-            {/* Breadcrumb */}
-            <nav className="flex items-center justify-center gap-2 text-sm text-gray-400 font-[family-name:var(--font-montserrat)]">
-              <Link
-                href="/"
-                className="hover:text-[#c9a962] transition-colors"
-              >
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#c9a962]">
+              {/* Title */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">
                 Artisan Stories
-              </span>
-            </nav>
-          </motion.div>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-white/80 text-base sm:text-lg md:text-xl font-[family-name:var(--font-montserrat)] max-w-3xl mx-auto mb-6">
+                Discover the remarkable journeys of master craftsmen preserving traditional handicrafts of Andhra Pradesh
+              </p>
+
+              {/* Breadcrumb */}
+              <nav className="flex items-center justify-center gap-2 text-sm text-white/70">
+                <Link
+                  href="/"
+                  className="hover:text-[#c9a227] transition-colors font-[family-name:var(--font-montserrat)]"
+                >
+                  Home
+                </Link>
+                <span>/</span>
+                <span className="text-[#c9a227] font-[family-name:var(--font-montserrat)]">
+                  Artisan Stories
+                </span>
+              </nav>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Bottom Border */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#c9a962]/30 to-transparent" />
+        {/* Bottom decorative border */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c9a227] via-[#f7d794] to-[#c9a227]" />
       </section>
 
       {/* Main Content */}

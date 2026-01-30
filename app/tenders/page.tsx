@@ -115,7 +115,7 @@ export default function TendersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f6f1]/30" style={{ paddingTop: "180px" }}>
+    <div className="min-h-screen bg-[#f8f6f1]/30">
       {/* Hero Banner */}
       <div className="relative w-full overflow-hidden bg-gradient-to-r from-[#3d3428] via-[#4a3f2f] to-[#5a4d3a]">
         {/* Background Pattern */}
@@ -178,53 +178,6 @@ export default function TendersPage() {
 
       {/* Main Content */}
       <div className="w-[90%] md:w-[85%] max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        {/* Search and Filter Bar */}
-        <div className="mb-8">
-          {/* Search Bar */}
-          <div className="relative w-full md:max-w-xl mb-6">
-            <Search
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666]"
-              size={20}
-            />
-            <input
-              type="text"
-              placeholder="Search tenders..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-12 py-3.5 border-2 border-[#c9a227]/30 focus:border-[#c9a227] outline-none text-[#3d3428] placeholder:text-[#666666]/60 font-[family-name:var(--font-montserrat)] transition-colors bg-white rounded-sm"
-            />
-            {searchQuery && (
-              <button
-                onClick={handleClearSearch}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#3d3428] transition-colors"
-                aria-label="Clear search"
-              >
-                <X size={18} />
-              </button>
-            )}
-          </div>
-
-          {/* Status Filters */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2 text-[#3d3428] font-[family-name:var(--font-montserrat)] font-semibold">
-              <Filter size={18} />
-              <span className="text-sm">Status:</span>
-            </div>
-            {["Active", "Closed", "All"].map((status) => (
-              <button
-                key={status}
-                onClick={() => setSelectedStatus(status)}
-                className={`px-4 py-2 text-sm font-semibold rounded-sm transition-all duration-300 font-[family-name:var(--font-montserrat)] ${
-                  selectedStatus === status
-                    ? "bg-[#c9a227] text-white shadow-md"
-                    : "bg-white text-[#3d3428] border border-[#c9a227]/30 hover:border-[#c9a227] hover:bg-[#c9a227]/10"
-                }`}
-              >
-                {status}
-              </button>
-            ))}
-          </div>
-        </div>
 
         {/* Results count */}
         <div className="mb-6">

@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react";
 
 const newsEvents = [
   {
@@ -41,43 +41,40 @@ export default function NewsEventsV3() {
     <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
       <div className="relative z-10 w-[98%] max-w-none mx-auto px-6 lg:px-12 py-24">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-xl"
-          >
-            <span className="inline-flex items-center gap-3 text-[#A53430] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
-              <span className="w-8 h-px bg-[#A53430]" />
-              Stay Updated
-            </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#103248] font-[family-name:var(--font-playfair)] mb-4">
-              News &{" "}
-              <span className="text-[#E0AE31]">Events</span>
-            </h2>
-            <p className="text-[#64748b] text-lg">
-              Exhibitions, bazaars, and cultural celebrations showcasing our
-              artisans and their crafts.
-            </p>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-6xl mx-auto mb-16"
+        >
+          {/* Header with star divider */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-12 bg-[#E0AE31]"></div>
+            <Sparkles className="text-[#E0AE31]" size={20} />
+            <div className="h-px w-12 bg-[#E0AE31]"></div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <span className="inline-block text-[#E0AE31] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
+            STAY UPDATED
+          </span>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-[#1f2937] mb-6">
+            News & <span className="text-[#d97706]">Events</span>
+          </h2>
+
+          <p className="text-[#64748b] text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
+            Exhibitions, bazaars, and cultural celebrations showcasing our artisans and their crafts.
+          </p>
+
+          <Link
+            href="/news-events"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#103248] text-[#103248] font-semibold hover:bg-[#103248] hover:text-white transition-all duration-300"
           >
-            <Link
-              href="/news-events"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#103248] text-[#103248] font-semibold hover:bg-[#103248] hover:text-white transition-all duration-300"
-            >
-              View All Events
-              <ArrowRight size={18} />
-            </Link>
-          </motion.div>
-        </div>
+            View All Events
+            <ArrowRight size={18} />
+          </Link>
+        </motion.div>
 
         {/* Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -147,13 +147,15 @@ export default function HeroV3() {
             className="flex flex-wrap gap-4"
           >
             <Link
-              href="/products"
+            target="_blank"
+              href="https://lepakshihandicrafts.com/"
               className="px-8 py-4 bg-[#E0AE31] text-[#103248] font-bold text-base hover:bg-white transition-all duration-300"
             >
               Explore Collection
             </Link>
             <Link
-              href="/heritage"
+            target="_blank"
+              href="/our-heritage"
               className="px-8 py-4 border-2 border-white/30 text-white font-semibold text-base hover:bg-white/10 hover:border-white transition-all duration-300"
             >
               Our Heritage

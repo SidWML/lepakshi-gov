@@ -13,24 +13,24 @@ import {
 } from "lucide-react";
 
 const craftsLinks = [
-  { name: "Etikoppaka Lacquer", href: "/products/etikoppaka-lacquer" },
-  { name: "Pen Kalamkari", href: "/products/pen-kalamkari" },
-  { name: "Kondapalli Toys", href: "/products/kondapalli-toys" },
-  { name: "Brassware", href: "/products/brassware" },
-  { name: "Bronze Castings", href: "/products/bronze-castings" },
+  { name: "Etikoppaka Lacquer", href: "https://lepakshihandicrafts.com/wood-crafts-toys/etikoppaka-lacquerware-toys" },
+  { name: "Pen Kalamkari", href: "https://lepakshihandicrafts.com/paintings/pen-kalamkari" },
+  { name: "Kondapalli Toys", href: "https://lepakshihandicrafts.com/wood-crafts-toys/kondapalli-painted-toys" },
+  { name: "Brassware", href: "https://lepakshihandicrafts.com/metal-crafts/brassware" },
+  { name: "Bronze Castings", href: "https://lepakshihandicrafts.com/metal-crafts/bronze-casting" },
 ];
 
 const collectionsLinks = [
-  { name: "Featured Products", href: "/products/featured" },
-  { name: "Spiritual & Pooja", href: "/products/spiritual-pooja" },
-  { name: "ODOP", href: "/products/odop" },
+  { name: "Featured Products", href: "https://lepakshihandicrafts.com/featured-products" },
+  { name: "Spiritual & Pooja", href: "https://lepakshihandicrafts.com/spiritual-section" },
+  { name: "ODOP", href: "https://lepakshihandicrafts.com/odop" },
 ];
 
 const aboutLinks = [
-  { name: "Our Heritage", href: "/heritage" },
-  { name: "Store Locator", href: "/stores" },
-  { name: "Blogs", href: "/blogs" },
-  { name: "Gallery", href: "/gallery" },
+  { name: "Our Heritage", href: "https://lepakshihandicrafts.com/our-heritage" },
+  { name: "Store Locator", href: "https://lepakshihandicrafts.com/store-locator" },
+  { name: "Blogs", href: "https://lepakshihandicrafts.com/blogs" },
+  { name: "Gallery", href: "https://lepakshihandicrafts.com/gallery" },
   { name: "Lepakshi Handicrafts (Govt. Website)", href: "https://lepakshihandicrafts.com", target: "_blank" },
 ];
 
@@ -40,14 +40,46 @@ const supportLinks = [
   // { name: "Terms of Sale", href: "/terms-of-sale" },
   // { name: "Shipping & Delivery Policy", href: "/shipping-delivery" },
   // { name: "Replacement Policy", href: "/replacement-policy" },
-  { name: "Contact Us", href: "/contact-us" },
+  { name: "Contact Us", href: "https://lepakshihandicrafts.com/contact-us" },
+
 ];
 
+export function PinterestIcon({
+  width = 20,
+  height = 20,
+  className = "",
+}: {
+  width?: number;
+  height?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      {/* White circular background */}
+      <circle cx="12" cy="12" r="12" fill="white" />
+
+      {/* Pinterest logo */}
+      <path
+        d="M12.3 6.5c-3.1 0-4.7 2.2-4.7 4.1 0 1.1.4 2.1 1.3 2.5.1 0 .2 0 .2-.1l.3-.9c0-.1 0-.2-.1-.3-.3-.4-.5-.8-.5-1.4 0-1.8 1.4-3.4 3.6-3.4 2 0 3.1 1.2 3.1 2.8 0 2.1-1 3.9-2.4 3.9-.8 0-1.4-.7-1.2-1.5l.5-2c.2-.5.1-1-.2-1.3-.6-.6-1.7-.1-2 1-.2.6-.1 1.3.1 1.7l-1.1 4.3c-.3 1.1 0 2.4 0 2.5 0 .1.1.1.2 0 .1-.1.9-1.1 1.2-2.2l.6-2.2c.3.5 1.1.9 2 .9 2.6 0 4.3-2.4 4.3-5.5 0-2.4-2-4.6-5.1-4.6z"
+        fill="#1f2937"
+      />
+    </svg>
+  );
+}
+
+
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  { icon: Facebook, href: "https://www.facebook.com/lepakshihandicrafts", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/lepakshiaphdc", label: "Twitter" },
+  { icon: Youtube, href: "https://www.youtube.com/@lepakshiaphdc", label: "YouTube" },
+  { icon: Instagram, href: "https://www.instagram.com/lepakshi_handicrafts", label: "Instagram" },
+  { icon: PinterestIcon, href: "https://www.pinterest.com/lepakshihandicrafts/", label: "Pinterest" },
 ];
 
 export default function FooterV3Reference() {
@@ -196,3 +228,4 @@ export default function FooterV3Reference() {
     </footer>
   );
 }
+ 
