@@ -170,47 +170,69 @@ export default function HeritagePage() {
   return (
     <div className="min-h-screen bg-[#f8f6f1]">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 lg:py-36 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#3d3428]/5 via-transparent to-[#c9a227]/5"></div>
-        <div className="absolute top-0 left-0 w-72 h-72 bg-[#c9a227]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#3d3428]/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-
-        <div className="w-[90%] md:w-[85%] max-w-[1400px] mx-auto relative">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-          >
-            <motion.p
-              variants={fadeInUp}
-              className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#c9a227] font-semibold mb-4 font-[family-name:var(--font-montserrat)]"
-            >
-              Our Story
-            </motion.p>
-            <motion.h1
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#3d3428] font-[family-name:var(--font-playfair)] mb-6 leading-[1.1]"
-            >
-              Preserving Heritage,
-              <br />
-              Empowering Artisans
-            </motion.h1>
-            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3 mb-8">
-              <span className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#c9a227]"></span>
-              <SparklesIcon className="w-4 h-4 text-[#c9a227]" />
-              <span className="w-12 md:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#c9a227]"></span>
-            </motion.div>
-            <motion.p
-              variants={fadeInUp}
-              className="text-base sm:text-lg md:text-xl text-[#666666] font-[family-name:var(--font-montserrat)] leading-relaxed max-w-3xl mx-auto"
-            >
-              For over four decades, Lepakshi Handicrafts has been the bridge between India&apos;s
-              master craftsmen and those who appreciate the beauty of authentic, handcrafted
-              artistry.
-            </motion.p>
-          </motion.div>
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#3d3428] via-[#4a3f2f] to-[#5a4d3a]">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
         </div>
+
+        <div className="relative w-full py-10 md:py-14 lg:py-16">
+          <div className="w-[90%] md:w-[85%] max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center max-w-4xl mx-auto"
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
+            >
+              {/* Decorative Element */}
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="w-12 h-[2px] bg-[#c9a227]" />
+                <span className="text-[#c9a227] text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)]">
+                  Our Story
+                </span>
+                <div className="w-12 h-[2px] bg-[#c9a227]" />
+              </div>
+
+              {/* Title */}
+              <motion.h1
+                variants={fadeInUp}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4"
+              >
+                Our Heritage
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                variants={fadeInUp}
+                className="text-white/80 text-base sm:text-lg md:text-xl font-[family-name:var(--font-montserrat)] max-w-3xl mx-auto mb-6"
+              >
+                For over four decades, Lepakshi Handicrafts has been the bridge between India&apos;s master craftsmen and those who appreciate the beauty of authentic, handcrafted artistry.
+              </motion.p>
+
+              {/* Breadcrumb */}
+              <nav className="flex items-center justify-center gap-2 text-sm text-white/70">
+                <Link
+                  href="/"
+                  className="hover:text-[#c9a227] transition-colors font-[family-name:var(--font-montserrat)]"
+                >
+                  Home
+                </Link>
+                <span>/</span>
+                <span className="text-[#c9a227] font-[family-name:var(--font-montserrat)]">
+                  Our Heritage
+                </span>
+              </nav>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom decorative border */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c9a227] via-[#f7d794] to-[#c9a227]" />
       </section>
 
       {/* Stats Section */}

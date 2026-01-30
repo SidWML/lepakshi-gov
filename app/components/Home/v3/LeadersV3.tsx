@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
 
 const leaders = [
   {
@@ -37,29 +38,35 @@ export default function LeadersV3() {
     <section className="w-full bg-[#fff] py-16 md:py-24">
       <div className="w-[98%] max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-3 text-[#E0AE31] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
-              <span className="w-12 h-px bg-[#E0AE31]" />
-              Leadership
-              <span className="w-12 h-px bg-[#E0AE31]" />
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-playfair)]">
-              Guiding <span className="text-[#d97706]">Vision</span>
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Meet the visionary leaders empowering artisans and preserving our heritage
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-6xl mx-auto mb-16"
+        >
+          {/* Header with star divider */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-12 bg-[#E0AE31]"></div>
+            <Sparkles className="text-[#E0AE31]" size={20} />
+            <div className="h-px w-12 bg-[#E0AE31]"></div>
+          </div>
+
+          <span className="inline-block text-[#E0AE31] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
+            LEADERSHIP
+          </span>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-[#1f2937] mb-6">
+            Guiding <span className="text-[#d97706]">Vision</span>
+          </h2>
+
+          <p className="text-[#64748b] text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-16">
+            Meet the visionary leaders empowering artisans and preserving our heritage.
+          </p>
+        </motion.div>
 
         {/* Leaders Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {leaders.map((leader, index) => (
             <motion.div
               key={index}
