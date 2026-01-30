@@ -334,7 +334,7 @@ export default function DownloadsPage() {
                 If you're unable to find the document you're looking for or need assistance with downloads, please feel free to contact us.
               </p>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#3d3428] text-white font-semibold hover:bg-[#c9a227] transition-colors font-[family-name:var(--font-montserrat)] text-sm"
               >
                 Contact Support

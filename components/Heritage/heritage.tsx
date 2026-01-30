@@ -567,14 +567,14 @@ export default function HeritagePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/store-locator"
+              href="https://lepakshihandicrafts.com/store-locator"
               className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#3d3428] text-white font-semibold font-[family-name:var(--font-montserrat)] text-sm sm:text-base hover:bg-[#c9a227] transition-all duration-300"
             >
               Find a Store Near You
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <Link
-              href="/products"
+              href="https://lepakshihandicrafts.com"
               className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#3d3428] text-[#3d3428] font-semibold font-[family-name:var(--font-montserrat)] text-sm sm:text-base hover:bg-[#3d3428] hover:text-white transition-all duration-300"
             >
               Shop Online
