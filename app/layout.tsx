@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import NavbarV3 from "./components/layout/v3/NavbarV3";
 
 // Primary font for UI elements
 const montserrat = Montserrat({
@@ -99,7 +100,7 @@ export default function RootLayout({
         style={{ backgroundColor: "#f8f6f1", fontFamily: "var(--font-lato)" }}
         suppressHydrationWarning
       >
-      <Navbar />
+      <NavbarV3/>
         {children}
       <Footer />      
       </body>
