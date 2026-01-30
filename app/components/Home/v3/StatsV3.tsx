@@ -5,24 +5,27 @@ import { motion } from "framer-motion";
 
 const stats = [
   {
-    value: "10,000+",
-    label: "Elderly Artisans",
-    description: "Supporting experienced artisans from various crafts traditions",
+    value: "45+",
+    label: "Years of Legacy",
+    description: "Since 1981",
   },
   {
-    value: "13",
-    label: "Partners Onboard",
-    description: "Strategic collaborations across various craft clusters",
+    value: "5000+",
+    label: "Artisan Partners",
+    description: "Across AP",
   },
   {
-    value: "50+",
-    label: "Panchayats",
-    description: "Reaching the farthest corners to support artisan families",
+    value: "36+",
+    secondValue: "100+",
+    label: "Craft Forms",
+    description: "Across AP",
+    secondDescription: "Across INDIA",
+    hasTwoColumns: true,
   },
   {
-    value: "5,000+",
-    label: "Products/Artworks",
-    description: "Diverse collection representing Andhra Pradesh's cultural wealth",
+    value: "26",
+    label: "Districts",
+    description: "Statewide Reach",
   },
 ];
 
@@ -72,20 +75,65 @@ export default function StatsV3() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-[#FAF8F3] px-8 py-10 text-center border border-[#E5DCC8]/50 hover:shadow-lg transition-all duration-300"
             >
-              {/* Value */}
-              <div className="text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-[#1f2937] mb-3">
-                {stat.value}
-              </div>
+              {stat.hasTwoColumns ? (
+                <>
+                  {/* Two columns for Craft Forms */}
+                  <div className="flex items-center justify-center gap-4">
+                    {/* First column */}
+                    <div className="flex-1 text-center">
+                      <div className="text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-[#1f2937] mb-3">
+                        {stat.value}
+                      </div>
+                    </div>
 
-              {/* Label */}
-              <h3 className="text-base md:text-lg font-bold text-[#1f2937] mb-3">
-                {stat.label}
-              </h3>
+                    {/* Vertical divider */}
+                    <div className="h-16 w-px bg-[#E5DCC8]/50"></div>
 
-              {/* Description */}
-              <p className="text-[#64748b] text-sm leading-relaxed">
-                {stat.description}
-              </p>
+                    {/* Second column */}
+                    <div className="flex-1 text-center">
+                      <div className="text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-[#1f2937] mb-3">
+                        {stat.secondValue}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Label */}
+                  <h3 className="text-base md:text-lg font-bold text-[#1f2937] mb-3">
+                    {stat.label}
+                  </h3>
+
+                  {/* Two descriptions below the label */}
+                  <div className="flex items-center justify-center gap-4">
+                    <div className="flex-1 text-center">
+                      <p className="text-[#64748b] text-sm leading-relaxed">
+                        {stat.description}
+                      </p>
+                    </div>
+                    <div className="flex-1 text-center">
+                      <p className="text-[#64748b] text-sm leading-relaxed">
+                        {stat.secondDescription}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Value */}
+                  <div className="text-5xl md:text-6xl font-bold font-[family-name:var(--font-playfair)] text-[#1f2937] mb-3">
+                    {stat.value}
+                  </div>
+
+                  {/* Label */}
+                  <h3 className="text-base md:text-lg font-bold text-[#1f2937] mb-3">
+                    {stat.label}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-[#64748b] text-sm leading-relaxed">
+                    {stat.description}
+                  </p>
+                </>
+              )}
             </motion.div>
           ))}
         </div>
