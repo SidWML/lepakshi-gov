@@ -34,7 +34,7 @@ const leaders = [
 
 export default function LeadersV3() {
   return (
-    <section className="w-full bg-[#F5ECE3] py-16 md:py-24">
+    <section className="w-full bg-[#fff] py-16 md:py-24">
       <div className="w-[98%] max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">
