@@ -14,7 +14,7 @@ const navLinks = [
     name: "About Us",
     href: "/aboutus",
     submenu: [
-      { name: "About Us", href: "/aboutus" },
+      { name: "Our Heritage", href: "/our-heritage" },
       { name: "Artisan Stories", href: "/artisan-stories" },
       { name: "Cluster Map", href: "/cluster-map" },
       { name: "Corporate Profile", href: "/corporate-profile" },
@@ -29,7 +29,7 @@ const navLinks = [
       { name: "Reports", href: "/reports" },
     ],
   },
-  { name: "Contact Us", href: "/contact" },
+  { name: "Contact Us", href: "/contact-us" },
 ];
 
 // Custom social icons as SVG components
