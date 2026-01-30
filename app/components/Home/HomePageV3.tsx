@@ -5,6 +5,7 @@ import CategoriesV3 from "./v3/CategoriesV3";
 import MeetArtisansV3 from "./v3/MeetArtisansV3";
 import VideoV3 from "./v3/VideoV3";
 import NewsEventsV3 from "./v3/NewsEventsV3";
+import LeadersV3 from "./v3/LeadersV3";
 
 export default function HomePageV3() {
   return (
@@ -16,6 +17,7 @@ export default function HomePageV3() {
       <MeetArtisansV3 />
       <VideoV3 />
       <NewsEventsV3 />
+      <LeadersV3 />
     </div>
   );
 }
