@@ -52,7 +52,7 @@ export default function ContactPageV3() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-white rounded-lg shadow-xl p-8 md:p-10">
+        <div className="bg-white  p-8 md:p-10">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center font-[family-name:var(--font-playfair)]">
             Send Us a Message
           </h2>
