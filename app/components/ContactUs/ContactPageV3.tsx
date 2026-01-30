@@ -29,32 +29,37 @@ export default function ContactPageV3() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5ECE3]">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[#0f766e] to-[#0d9488] py-20">
-        <div className="w-[98%] max-w-7xl mx-auto px-6 lg:px-12 text-center">
+    <div className="min-h-screen bg-[#F5ECE3] py-16 md:py-24">
+      <div className="w-[98%] max-w-3xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-12">
           <span className="inline-block text-[#E0AE31] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
             GET IN TOUCH
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-[family-name:var(--font-playfair)]">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-playfair)]">
             Contact Us
           </h1>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-8 h-px bg-[#E0AE31]" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#E0AE31]">
+              <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8L12 2Z" fill="currentColor" />
+            </svg>
+            <div className="w-8 h-px bg-[#E0AE31]" />
+          </div>
+          <p className="text-gray-600 max-w-xl mx-auto">
             We're here to help you discover the finest Indian handicrafts. Reach out to us for any inquiries, feedback, or assistance.
           </p>
         </div>
-      </div>
 
-      {/* Contact Form */}
-      <div className="w-[98%] max-w-3xl mx-auto px-6 py-16">
-        <div className="bg-white rounded-xl shadow-xl p-8 md:p-12">
+        {/* Contact Form */}
+        <div className="bg-white rounded-lg shadow-xl p-8 md:p-10">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center font-[family-name:var(--font-playfair)]">
             Send Us a Message
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name Fields */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                   First Name*
@@ -67,7 +72,7 @@ export default function ContactPageV3() {
                   onChange={handleChange}
                   required
                   placeholder="First Name"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors"
                 />
               </div>
               <div>
@@ -82,7 +87,7 @@ export default function ContactPageV3() {
                   onChange={handleChange}
                   required
                   placeholder="Last Name"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors"
                 />
               </div>
             </div>
@@ -100,7 +105,7 @@ export default function ContactPageV3() {
                 onChange={handleChange}
                 required
                 placeholder="Email"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors"
               />
             </div>
 
@@ -117,7 +122,7 @@ export default function ContactPageV3() {
                 onChange={handleChange}
                 required
                 placeholder="Phone Number"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors"
               />
             </div>
 
@@ -132,7 +137,7 @@ export default function ContactPageV3() {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors bg-white"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors bg-white"
               >
                 <option value="">Select Category</option>
                 <option value="general">General Inquiry</option>
@@ -157,7 +162,7 @@ export default function ContactPageV3() {
                 onChange={handleChange}
                 required
                 placeholder="Subject"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors"
               />
             </div>
 
@@ -172,9 +177,9 @@ export default function ContactPageV3() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={6}
+                rows={5}
                 placeholder="Your Message"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors resize-none"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors resize-none"
               />
             </div>
 
@@ -183,16 +188,16 @@ export default function ContactPageV3() {
               <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 mb-2">
                 Captcha*
               </label>
-              <div className="flex gap-4 items-center">
-                <div className="bg-gray-100 px-6 py-3 rounded-lg border-2 border-gray-200 font-mono text-xl font-bold tracking-wider select-none">
-                  6FUPOS
+              <div className="flex gap-3 items-center mb-3">
+                <div className="bg-gray-50 px-5 py-2.5 rounded border border-gray-300 font-mono text-lg font-bold tracking-widest select-none">
+                  SNVHFC
                 </div>
                 <button
                   type="button"
-                  className="p-3 text-gray-600 hover:text-[#0f766e] transition-colors"
+                  className="p-2.5 text-gray-600 hover:text-[#E0AE31] transition-colors"
                   aria-label="Refresh captcha"
                 >
-                  <RefreshCw size={20} />
+                  <RefreshCw size={18} />
                 </button>
               </div>
               <input
@@ -203,63 +208,19 @@ export default function ContactPageV3() {
                 onChange={handleChange}
                 required
                 placeholder="Enter the captcha text"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#0f766e] focus:outline-none transition-colors mt-3"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded focus:border-[#E0AE31] focus:outline-none focus:ring-1 focus:ring-[#E0AE31] transition-colors"
               />
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-[#2C1810] text-white py-4 rounded-lg font-semibold hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-[#6B4423] text-white py-3.5 rounded font-semibold hover:bg-[#563619] transition-colors flex items-center justify-center gap-2 text-sm"
             >
-              <Send size={20} />
+              <Send size={18} />
               Send Enquiry
             </button>
           </form>
-        </div>
-      </div>
-
-      {/* Contact Information */}
-      <div className="w-[98%] max-w-7xl mx-auto px-6 lg:px-12 pb-16">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#E0AE31] to-[#d97706] rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Visit Us</h3>
-            <p className="text-gray-600 text-sm">
-              Lepakshi Handicrafts Emporium<br />
-              Gandhi Nagar, Vijayawada - 520003
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#0f766e] to-[#0d9488] rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Call Us</h3>
-            <p className="text-gray-600 text-sm">
-              +91 9184990935<br />
-              +91 9184990937
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#d97706] to-[#E0AE31] rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Email Us</h3>
-            <p className="text-gray-600 text-sm">
-              info@lepakshihandicrafts.gov.in
-            </p>
-          </div>
         </div>
       </div>
     </div>
