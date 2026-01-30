@@ -35,11 +35,11 @@ const aboutLinks = [
 ];
 
 const supportLinks = [
-  { name: "Privacy Policy", href: "/privacy-policy" },
-  { name: "Terms of Use", href: "/terms" },
-  { name: "Terms of Sale", href: "/terms-of-sale" },
-  { name: "Shipping & Delivery Policy", href: "/shipping-delivery" },
-  { name: "Replacement Policy", href: "/replacement-policy" },
+  // { name: "Privacy Policy", href: "/privacy-policy" },
+  // { name: "Terms of Use", href: "/terms" },
+  // { name: "Terms of Sale", href: "/terms-of-sale" },
+  // { name: "Shipping & Delivery Policy", href: "/shipping-delivery" },
+  // { name: "Replacement Policy", href: "/replacement-policy" },
   { name: "Contact Us", href: "/contact-us" },
 ];
 
@@ -54,7 +54,7 @@ export default function FooterV3Reference() {
   return (
     <footer className="relative bg-[#F5ECE3] text-gray-700 pt-16 pb-8">
       {/* Main Footer Content */}
-      <div className="w-[98%] max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="w-[98%] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Logo and Company Info */}
           <div className="lg:col-span-1">
@@ -168,8 +168,11 @@ export default function FooterV3Reference() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-300 pt-8">
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="w-[98%] mx-auto px-6 lg:px-12">
+        <div className="border-t border-gray-300 pt-8 pb-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Trust Badges */}
             <div className="flex items-center gap-6">
