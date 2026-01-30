@@ -45,7 +45,7 @@ export default function NewsEvents() {
       {/* Top divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C9A24D]/40 to-transparent" />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="relative z-10 w-[98%] max-w-none mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <div className="flex items-center justify-center gap-4 mb-6">

@@ -335,26 +335,22 @@ export default function Navbar() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
           isScrolled || isMobileMenuOpen
-            ? "bg-white shadow-2xl shadow-gray-300/50"
-            : "bg-transparent"
+            ? "bg-white shadow-lg shadow-gray-200/50"
+            : "bg-white shadow-md"
         }`}
         initial={{ y: 0 }}
         animate={{ y: isHeaderVisible || isMobileMenuOpen ? 0 : -200 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        {/* Top Gold Border Accent */}
-        <div
-          className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#c9a962] to-transparent transition-opacity duration-300 ${
-            isScrolled ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        {/* Top Border Accent */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0f766e] via-[#d97706] to-[#0f766e]" />
         {/* TOP HEADER SECTION */}
         <div
           className={`transition-all duration-300 ${
             isScrolled ? "py-2" : "py-4"
           }`}
         >
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+          <div className="w-[98%] max-w-none mx-auto px-6 lg:px-8">
             {/* DESKTOP LAYOUT */}
             <div className="hidden lg:flex items-center justify-between gap-6">
               {/* LEFT SECTION - Government Logo & Text */}
@@ -371,9 +367,7 @@ export default function Navbar() {
                   priority
                 />
                 <div
-                  className={`leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] ${
-                    isScrolled ? "text-[#2c2c2c]" : "text-white"
-                  }`}
+                  className="leading-relaxed transition-colors duration-300 font-[family-name:var(--font-montserrat)] text-[#1f2937]"
                 >
                   <div
                     className={`font-bold leading-snug transition-all duration-300 ${
@@ -390,7 +384,7 @@ export default function Navbar() {
                     Development Corporation Ltd.
                   </div>
                   <div
-                    className={`text-[#c9a962] font-medium mt-1 leading-snug transition-all duration-300 ${
+                    className={`font-medium mt-1 leading-snug transition-all duration-300 text-[#d97706] ${
                       isScrolled ? "text-[13px]" : "text-[14px]"
                     }`}
                   >
@@ -418,7 +412,7 @@ export default function Navbar() {
                     width={130}
                     height={130}
                     className={`transition-all duration-300 ${
-                      isScrolled ? "h-[50px]" : "h-[65px] brightness-0 invert"
+                      isScrolled ? "h-[50px]" : "h-[65px]"
                     } w-auto object-contain cursor-pointer hover:scale-110`}
                     quality={100}
                   />
@@ -445,11 +439,8 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     aria-label={aria}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg ${
-                      isScrolled
-                        ? "bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#c9a962]/20 text-[#2c2c2c] hover:border-[#c9a962] hover:text-[#c9a962] hover:bg-[#c9a962]/5"
-                        : "bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50"
-                    }`}
+                    className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg
+                      bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#d97706]/20 text-[#0f766e] hover:border-[#d97706] hover:text-[#d97706] hover:bg-[#d97706]/5"
                   >
                     <Icon className="" />
                   </Link>
@@ -464,8 +455,8 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`p-2 rounded transition-all duration-300 cursor-pointer ${
                   isScrolled || isMobileMenuOpen
-                    ? "text-[#2c2c2c] hover:text-[#c9a962] hover:bg-[#c9a962]/10"
-                    : "text-white hover:text-[#c9a962] hover:bg-white/10"
+                    ? "text-[#1f2937] hover:text-[#d97706] hover:bg-[#d97706]/10"
+                    : "text-[#1f2937] hover:text-[#d97706] hover:bg-white/10"
                 }`}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -505,13 +496,9 @@ export default function Navbar() {
 
         {/* NAVIGATION MENU */}
         <div
-          className={`border-y transition-colors duration-300 ${
-            isScrolled || isMobileMenuOpen
-              ? "border-[#c9a962]/20 bg-white/50 backdrop-blur-sm"
-              : "border-white/10 bg-transparent"
-          }`}
+          className="border-y border-[#0f766e]/10 bg-[#f8f9fa]"
         >
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-8 ">
+          <div className="w-[98%] max-w-none mx-auto px-6 lg:px-8 ">
             {/* DESKTOP NAVIGATION */}
             <div className="hidden lg:flex items-center justify-center ">
               <nav className="flex items-center flex-1 justify-center">
@@ -519,11 +506,8 @@ export default function Navbar() {
                   <div key={item.label} className="relative group/nav">
                     <Link
                       href={item.href}
-                      className={`group relative px-4 py-3 text-[13px] font-bold tracking-wider flex items-center gap-1.5 transition-all duration-200 font-[family-name:var(--font-montserrat)] ${
-                        isScrolled
-                          ? "text-[#2c2c2c] hover:text-[#c9a962]"
-                          : "text-white hover:text-[#c9a962]"
-                      }`}
+                      className="group relative px-4 py-3 text-[13px] font-bold tracking-wider flex items-center gap-1.5 transition-all duration-200 font-[family-name:var(--font-montserrat)]
+                        text-[#0f766e] hover:text-[#d97706]"
                     >
                       <span className="relative z-10">{item.label}</span>
                       {item.hasDropdown && (
@@ -532,7 +516,7 @@ export default function Navbar() {
                           className="opacity-70 group-hover:opacity-100 transition-opacity mt-0.5"
                         />
                       )}
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#c9a962] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#d97706] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </Link>
 
                     {/* Dropdown Menu */}
@@ -561,7 +545,7 @@ export default function Navbar() {
                           className="group flex items-start justify-between gap-4 hover:bg-gray-50 p-2 -m-2 rounded transition-colors"
                         >
                           <div>
-                            <div className="text-[16px] font-semibold text-[#5a0a0a] group-hover:text-[#c9a962] transition-colors">
+                            <div className="text-[16px] font-semibold text-[#0f766e] group-hover:text-[#d97706] transition-colors">
                               {child.label}
                             </div>
                             {child.location && (
@@ -605,7 +589,7 @@ export default function Navbar() {
           className="lg:hidden fixed inset-0 z-[9998] bg-gradient-to-br from-white via-[#faf8f5] to-[#f8f5ef] overflow-y-auto"
           style={{ paddingTop: "80px" }}
         >
-          <nav className="max-w-[1400px] mx-auto px-6 py-8">
+          <nav className="w-[98%] max-w-none mx-auto px-6 py-8">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.label}
@@ -615,7 +599,7 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="block px-4 py-4 text-[#2c2c2c] text-base font-semibold border-b border-[#c9a962]/20 last:border-b-0 hover:bg-[#c9a962]/10 hover:text-[#c9a962] transition-all flex items-center justify-between cursor-pointer group font-[family-name:var(--font-montserrat)]"
+                  className="block px-4 py-4 text-[#1f2937] text-base font-semibold border-b border-[#d97706]/20 last:border-b-0 hover:bg-[#d97706]/10 hover:text-[#d97706] transition-all flex items-center justify-between cursor-pointer group font-[family-name:var(--font-montserrat)]"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="group-hover:translate-x-2 transition-transform duration-200">
@@ -629,7 +613,7 @@ export default function Navbar() {
             ))}
 
             {/* Mobile Social Links */}
-            <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-[#c9a962]/20">
+            <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-[#d97706]/20">
               {socialLinks.map(({ name, href, aria, Icon }) => (
                 <a
                   key={name}
@@ -637,7 +621,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                   aria-label={aria}
-                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#c9a962]/30 flex items-center justify-center transition-all duration-300 hover:bg-[#c9a962]/10 hover:border-[#c9a962] hover:scale-110 hover:shadow-lg text-[#2c2c2c] hover:text-[#c9a962]"
+                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f8f5ef] to-white border-2 border-[#d97706]/30 flex items-center justify-center transition-all duration-300 hover:bg-[#d97706]/10 hover:border-[#d97706] hover:scale-110 hover:shadow-lg text-[#0f766e] hover:text-[#d97706]"
                 >
                   <Icon />
                 </a>

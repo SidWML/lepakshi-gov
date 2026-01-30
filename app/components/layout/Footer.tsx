@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     <>
       <footer className="bg-[#ffecce]">
         {/* Main Footer Content */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-40 py-8 sm:py-10 lg:py-12">
+        <div className="w-[98%] max-w-none mx-auto px-4 sm:px-6 lg:px-16 py-8 sm:py-10 lg:py-12">
           {/* Desktop Layout - Side by Side */}
           <div className="hidden lg:grid lg:grid-cols-12 gap-12">
             {/* Address Section - Left Column */}
@@ -457,7 +457,7 @@ const Footer: React.FC = () => {
 
         {/* Copyright Section */}
         <div className="bg-[#e8d9c0] py-3 sm:py-4">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-[98%] max-w-none mx-auto px-4 sm:px-6 lg:px-16">
             <div className="text-center">
               <p className="text-gray-700 text-[12px] sm:text-[13px] leading-[1.6] m-0">
                 &copy; 2024 Lepakshi Handicrafts. All Rights Reserved
