@@ -378,7 +378,7 @@ export default function TendersPage() {
               </ul>
               <div className="mt-6">
                 <Link
-                  href="/contact"
+                  href="/contact-us"
                   className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#c9a227] text-white font-semibold hover:bg-white hover:text-[#3d3428] transition-colors font-[family-name:var(--font-montserrat)] text-sm"
                 >
                   Contact for Queries
