@@ -100,11 +100,11 @@ export default function RootLayout({
         style={{ backgroundColor: "#f8f6f1", fontFamily: "var(--font-lato)" }}
         suppressHydrationWarning
       >
-      <NavbarV3/>
-      <MainWrapper>
-        {children}
-      </MainWrapper>
-      <FooterV3Reference />
+        <NavbarV3 />
+        <MainWrapper>
+          {children}
+        </MainWrapper>
+        <FooterV3Reference />
       </body>
     </html>
   );

@@ -10,6 +10,7 @@ import {
   TempleIcon,
   SparklesIcon,
 } from "../../app/components/icons/HeritageIcons";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
